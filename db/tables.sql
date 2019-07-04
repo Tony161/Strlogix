@@ -1,0 +1,12 @@
+CREATE DATABASE streetlogix;
+
+USE streetlogix;
+
+CREATE TABLE users (
+  id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  email VARCHAR(32) NOT NULL,
+  password VARCHAR(32) NOT NULL,
+  firstName VARCHAR(32) NOT NULL,
+  lastName VARCHAR(32) NOT NULL,
+  title VARCHAR(32) NOT NULL
+);

@@ -1,0 +1,13 @@
+{
+  "debug": "true",
+  "server": {
+    "listenHostname": "localhost",
+    "port": 3300
+  },
+  "db": {
+    "host": "localhost",
+    "user": "root",
+    "password": "12#$qwER",
+    "database": "streetlogix"
+  }
+}
