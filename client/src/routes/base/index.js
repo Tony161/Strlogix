@@ -5,6 +5,7 @@ import Registration from '../registration';
 
 // import Recovery from '../recovery';
 import Login from '../login';
+import Profile from '../profile';
 
 export default () => (
   <section>
@@ -12,6 +13,7 @@ export default () => (
       <Route path={'/register'} component={Registration} />
       {/* <Route path={'/recovery'} component={Recovery} /> */}
       <Route path={'/login'} component={Login} />
+      <Route path={'/profile'} component={Profile} />
       <Redirect to={'/register'} />
     </Switch>
   </section>

@@ -17,14 +17,7 @@ class LoginComponent extends React.Component {
         this.email.current.value,
         this.password.current.value,
       )
-      .then(response => {
-        console.log(response);
-
-        // if (this.props.getLogin.status !== 'success') {
-        //   this.setState({ error: this.props.getLogin.error });
-        // } else {
-        //   this.props.onAddWedding();
-        // }
+      .then(() => { alert('Congratulations')
       });
   };
 
