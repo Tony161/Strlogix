@@ -49,6 +49,15 @@ class RegisterComponent extends React.Component {
           this.email.current.value,
           this.password.current.value,
         )
+        .then(() => {
+            alert('success!')
+
+          // if (this.props.userCreation.status !== 'success') {
+          //   this.setState({ error: this.props.userCreation.error });
+          // } else {
+          //   this.props.gotoProfile();
+          // }
+        });
     }
   };
 

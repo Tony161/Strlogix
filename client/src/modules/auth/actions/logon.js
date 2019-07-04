@@ -5,13 +5,14 @@ export default (email, password) => ({
   type: ActionTypes.LOGON.name,
   payload: axios
     .post(
-      '/',
+      `http://localhost:3300/api/getLogin/`,
       { email, password },
       {
         headers: {
           'Content-Type': 'application/json',
+          // 'Target-URL': 'https://api.hitchhero.com/user/login',
         },
       },
     )
-    .then(response => response.data.response),
+    .then(response =>response.data),
 });

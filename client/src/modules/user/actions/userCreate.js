@@ -13,5 +13,5 @@ export default (firstName, lastName, title, email, password) => ({
         },
       },
     )
-    .then(response => response.data.response),
+    .then(response => response.data),
 });
