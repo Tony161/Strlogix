@@ -1,8 +1,7 @@
 const connect = require('../../../db/connect');
 
 const addLogin = (req, res) => {
-  const query =
-    'select * from users where email= ? and password= ?';
+  const query = 'select * from users where email= ? and password= ?';
   const connection = connect();
   connection.query(
     query,
@@ -15,8 +14,8 @@ const addLogin = (req, res) => {
         console.log(err);
       }
       connection.end();
-  });
-}
+    },
+  );
+};
 
-
-  module.exports = addLogin
+module.exports = addLogin;

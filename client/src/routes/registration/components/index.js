@@ -14,21 +14,21 @@ class RegisterComponent extends React.Component {
     this.state = { error: null };
   }
 
-  logIn = event =>{
-      event.preventDefault();
-      const { history } = this.props;
-      history.push('/login');
+  logIn = event => {
+    event.preventDefault();
+    const { history } = this.props;
+    history.push('/login');
   };
 
-  onClear = event =>{
+  onClear = event => {
     event.preventDefault();
     this.firstName.current.value = null;
-    this.lastName.current.value  = null;
-    this.title.current.value  = null;
-    this.email.current.value  = null;
+    this.lastName.current.value = null;
+    this.title.current.value = null;
+    this.email.current.value = null;
     this.password.current.value = null;
     this.rePassword.current.value = null;
-  }
+  };
 
   onRegister = event => {
     event.preventDefault();
@@ -44,14 +44,13 @@ class RegisterComponent extends React.Component {
           this.email.current.value,
           this.password.current.value,
         )
-        .then((res) => {
+        .then(res => {
           if (res.value.result !== 'Ok') {
-            this.setState({ error: "error" });
+            this.setState({ error: 'error' });
           } else {
-            this.props.gotoProfile()
+            this.props.gotoProfile();
           }
-        }
-        );
+        });
     }
   };
 
@@ -61,9 +60,9 @@ class RegisterComponent extends React.Component {
         <div className="row justify-content-center">
           <div className="col-md-4">
             <div className="col-md-12">
-             <img src={logo}  alt="logo" style={{ width: '100%' }}/>
-             <br />
-             <br />
+              <img src={logo} alt="logo" style={{ width: '100%' }} />
+              <br />
+              <br />
             </div>
             <form onSubmit={this.onRegister}>
               {this.state.error && (

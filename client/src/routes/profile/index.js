@@ -15,9 +15,9 @@ class ProfileContainer extends React.Component {
   render() {
     return (
       <ProfileComponent
-      gotoLogin={this.gotoLogin}
-      getData={this.props.getData}
-      updateData={this.props.updateData}
+        gotoLogin={this.gotoLogin}
+        getData={this.props.getData}
+        updateData={this.props.updateData}
       />
     );
   }
@@ -35,7 +35,7 @@ const mapDispatchToProps = dispatch =>
     {
       profile: profileAction,
       getData: getDataAction,
-      updateData: updateDataAction
+      updateData: updateDataAction,
     },
     dispatch,
   );

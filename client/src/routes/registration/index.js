@@ -8,10 +8,13 @@ import RegisterComponent from './components';
 class RegisterContainer extends React.Component {
   gotoProfile = () => this.props.history.push('/profile');
   render() {
-    return <RegisterComponent
-    onRegisterUser={this.props.createUser}
-    gotoProfile={this.gotoProfile}
-    userCreation={this.props.user.creation}/>;
+    return (
+      <RegisterComponent
+        onRegisterUser={this.props.createUser}
+        gotoProfile={this.gotoProfile}
+        userCreation={this.props.user.creation}
+      />
+    );
   }
 }
 

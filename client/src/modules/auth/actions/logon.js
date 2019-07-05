@@ -14,6 +14,5 @@ export default (email, password) => ({
         },
       },
     )
-     .then(response => response.data
-    ),
+    .then(response => response.data),
 });

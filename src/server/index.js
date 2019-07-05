@@ -25,7 +25,5 @@ const serverListenHost = config.get('server.listenHostname');
 const serverPort = config.get('server.port');
 
 app.listen(serverPort, serverListenHost, () =>
-  console.log(
-    `Server listening on port ${serverListenHost}:${serverPort}!`,
-  ),
+  console.log(`Server listening on port ${serverListenHost}:${serverPort}!`),
 );
