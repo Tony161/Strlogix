@@ -5,7 +5,7 @@ export default (email, password) => ({
   type: ActionTypes.LOGON.name,
   payload: axios
     .post(
-      `http://localhost:3300/api/login/addLogin`,
+      `http://localhost:3300/api/auth/login`,
       { email, password },
       {
         headers: {
