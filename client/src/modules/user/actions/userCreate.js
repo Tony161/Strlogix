@@ -13,5 +13,7 @@ export default (firstName, lastName, title, email, password) => ({
         },
       },
     )
-    .then(response => response.data),
+    .then((response) => {
+      console.log(response.data)
+     return response.data }),
 });

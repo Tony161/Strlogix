@@ -17,8 +17,7 @@ class LoginComponent extends React.Component {
         this.email.current.value,
         this.password.current.value,
       )
-      .then(() => { alert('Congratulations')
-      });
+      .then(() => this.props.gotoProfile());
   };
 
   recoverPassword = event => {

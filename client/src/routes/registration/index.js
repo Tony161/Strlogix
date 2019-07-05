@@ -3,13 +3,15 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import createUserAction from '../../modules/user/actions/userCreate';
-
 import RegisterComponent from './components';
 
 class RegisterContainer extends React.Component {
+  gotoProfile = () => this.props.history.push('/profile');
   render() {
     return <RegisterComponent
-    onRegisterUser={this.props.createUser} />;
+    onRegisterUser={this.props.createUser}
+    gotoProfile={this.gotoProfile}
+    userCreation={this.props.user.creation}/>;
   }
 }
 

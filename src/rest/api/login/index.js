@@ -3,6 +3,6 @@ const { Router } = require('express');
 const router = new Router();
 
 router.post('/toLogin', require('./toLogin'));
-router.get(`/:email`, require('./getLogin'));
+router.get(`/getLogin/:email`, require('./getLogin'));
 
 module.exports = router;

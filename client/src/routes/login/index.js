@@ -8,14 +8,14 @@ import logonUserAction from '../../modules/auth/actions/logon';
 import LoginComponent from './components';
 
 class LoginContainer extends React.Component {
-  gotoAddWedding = () => this.props.history.push('/add_wedding');
+  gotoProfile = () => this.props.history.push('/profile');
 
   render() {
     return (
       <LoginComponent
         onLogonUser={this.props.logonUser}
         auth={this.props.auth}
-        // getLogin={this.props.getLogin}
+        gotoProfile={this.gotoProfile}
       />
     );
   }

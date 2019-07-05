@@ -1,11 +1,6 @@
 import React from 'react';
-// import styled from "styled-components";
 import { withRouter } from 'react-router';
 import logo from '../../../images/StreetLogix_Logo_1.png';
-
-// const streetLogoImg = styled.img`
-//   height: 200px;
-// `;
 
 class RegisterComponent extends React.Component {
   constructor(props) {
@@ -49,15 +44,14 @@ class RegisterComponent extends React.Component {
           this.email.current.value,
           this.password.current.value,
         )
-        .then(() => {
-            alert('success!')
-
-          // if (this.props.userCreation.status !== 'success') {
-          //   this.setState({ error: this.props.userCreation.error });
-          // } else {
-          //   this.props.gotoProfile();
-          // }
-        });
+        .then((res) => {
+          if (res.value.result !== 'Ok') {
+            this.setState({ error: "error" });
+          } else {
+            this.props.gotoProfile()
+          }
+        }
+        );
     }
   };
 

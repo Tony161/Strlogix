@@ -14,6 +14,7 @@ class ProfileContainer extends React.Component {
   render() {
     return (
       <ProfileComponent
+      gotoLogin={this.gotoLogin}
         // onWeddingWizardStep6={this.props.weddingWizardStep6}
         // weddingWizard={this.props.weddingWizard}
         // uuid={this.props.auth.payload.uuid}
