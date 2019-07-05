@@ -1,6 +1,6 @@
 const connect = require('../../../db/connect');
 
-const getLogin = (req, res) => {
+const get = (req, res) => {
   var connection = connect();
   connection.query(
     'SELECT * FROM users WHERE email = ?',
@@ -17,4 +17,4 @@ const getLogin = (req, res) => {
   );
 };
 
-module.exports = getLogin;
+module.exports = get;

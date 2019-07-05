@@ -12,6 +12,12 @@ class ProfileComponent extends React.Component {
     isSubmitted: false,
   };
 
+  getDataProfile = event => {
+    var email;
+    event.preventDefault();
+    this.props.getData(email );
+
+  };
 
 
   render() {

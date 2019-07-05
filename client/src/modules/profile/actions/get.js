@@ -1,10 +1,10 @@
 import axios from 'axios';
-import ActionTypes from '../constants/actionTypes';
+import ActionTypes from '../../profile/constants/actionTypes';
 
 export default (email) => ({
-  type: ActionTypes.LOGIN_GET.name,
+  type: ActionTypes.DATA_GET.name,
   payload: axios.get(
-    `http://localhost:3300/api/login/getLogin/${email}`,
+    `http://localhost:3300/api/profile/get/${email}`,
     {},
     {
       headers: {

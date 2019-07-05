@@ -2,7 +2,8 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-// import addImageAction from '../../../modules/images/actions/add';
+import getDataAction from '../../modules/profile/actions/get';
+import updateDataAction from '../../modules/profile/actions/update';
 import profileAction from '../../modules/profile/actions/profile';
 import ProfileComponent from './components';
 // import logoutUserAction from '../../../modules/auth/actions/logout';
@@ -15,16 +16,8 @@ class ProfileContainer extends React.Component {
     return (
       <ProfileComponent
       gotoLogin={this.gotoLogin}
-        // onWeddingWizardStep6={this.props.weddingWizardStep6}
-        // weddingWizard={this.props.weddingWizard}
-        // uuid={this.props.auth.payload.uuid}
-        // authToken={this.props.auth.payload.auth_token}
-        // addImage={this.props.addImage}
-        // onAddWedding={this.gotoAddWedding}
-        // logout={this.props.logout}
-        // gotoLogin={this.gotoLogin}
-        // images={this.props.images}
-        // error={this.props.error}
+      getData={this.props.getData}
+      updateData={this.props.updateData}
       />
     );
   }
@@ -41,7 +34,8 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       profile: profileAction,
-
+      getData: getDataAction,
+      updateData: updateDataAction
     },
     dispatch,
   );

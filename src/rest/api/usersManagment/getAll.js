@@ -1,13 +1,9 @@
 const connect = require('../../../db/connect');
 
-const toLogin = (req, res) => {
-  console.log(req.body)
-  const query =
-    'select * from users where email = ? and password =?';
-  const connection = connect();
+const getAll = (req, res) => {
+  var connection = connect();
   connection.query(
-    query,
-    [req.body.email, req.body.password],
+    'SELECT * FROM users',
     (err, rows, fields) => {
       if (!err) {
         res.send(rows);
@@ -16,8 +12,8 @@ const toLogin = (req, res) => {
         console.log(err);
       }
       connection.end();
-  });
-}
+    },
+  );
+};
 
-
-  module.exports = toLogin
+module.exports = getAll;
