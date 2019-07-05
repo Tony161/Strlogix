@@ -14,15 +14,6 @@ class ProfileComponent extends React.Component {
     this.props.getData(this.props.auth.action.email)
   }
 
-  getDataProfile = event => {
-    event.preventDefault();
-;
-
-  };
-
-
-
-
   render() {
     return (
       <div >
@@ -51,8 +42,6 @@ class ProfileComponent extends React.Component {
             </div>
           </div>
         </div>
-
-
     );
   }
 }

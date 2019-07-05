@@ -1,5 +1,5 @@
 import React from 'react';
-import { createStore } from 'redux'
+import { createStore } from 'redux';
 import { withRouter } from 'react-router';
 import logo from '../../../images/StreetLogix_Logo_1.png';
 
@@ -10,31 +10,25 @@ class LoginComponent extends React.Component {
     this.password = React.createRef();
     this.Checkbox = React.createRef();
   }
-  state = { RememberMe: false,
-           error: null };
+  state = { RememberMe: false, error: null };
 
-    handleCheckbox = () => {
-      this.setState({ RememberMe: this.Checkbox.current.checked });
-    };
+  handleCheckbox = () => {
+    this.setState({ RememberMe: this.Checkbox.current.checked });
+  };
 
   onLogon = event => {
     event.preventDefault();
     this.props
-      .onLogonUser(
-        this.email.current.value,
-        this.password.current.value,
-      )
+      .onLogonUser(this.email.current.value, this.password.current.value)
       .then(response => {
         console.log(response.value.status);
-      if (response.value.status !== 'Wrong Password or Email') {
-        this.props.gotoProfile();
-        return response;
-      } else {
-        this.setState({error: response.value.status});
-      }
-
-
-    });
+        if (response.value.status !== 'Wrong Password or Email') {
+          this.props.gotoProfile();
+          return response;
+        } else {
+          this.setState({ error: response.value.status });
+        }
+      });
   };
 
   recoverPassword = event => {
@@ -55,8 +49,7 @@ class LoginComponent extends React.Component {
         <div className="row justify-content-center">
           <div className="col-md-4">
             <div className="col-md-12">
-
-              <img src={logo}   alt="logo" style={{ width: '100%' }} />
+              <img src={logo} alt="logo" style={{ width: '100%' }} />
               <br />
               <br />
             </div>
@@ -84,15 +77,16 @@ class LoginComponent extends React.Component {
                 />
               </div>
               <label>
-              <input
-
-                    type="checkbox"
-                    id="RememberMe"
-                    ref={this.Checkbox}
-                    onChange={this.handleCheckbox}
-                    checked={this.state.RememberMe}
-                    /> Remember me </label>
-                  <br />
+                <input
+                  type="checkbox"
+                  id="RememberMe"
+                  ref={this.Checkbox}
+                  onChange={this.handleCheckbox}
+                  checked={this.state.RememberMe}
+                />{' '}
+                Remember me{' '}
+              </label>
+              <br />
 
               <div className="form-group row">
                 <input
@@ -103,11 +97,8 @@ class LoginComponent extends React.Component {
                 />
               </div>
               <div className="form-group row">
-                Forgot password?  &nbsp;
-                <a
-                  href="/recovery"
-                  onClick={this.recoverPassword}
-                >
+                Forgot password? &nbsp;
+                <a href="/recovery" onClick={this.recoverPassword}>
                   Reset password
                 </a>
               </div>
