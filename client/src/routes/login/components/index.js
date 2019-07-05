@@ -7,9 +7,16 @@ class LoginComponent extends React.Component {
     super(props);
     this.email = React.createRef();
     this.password = React.createRef();
-    this.state = { error: null };
+    this.Checkbox = React.createRef();  
   }
+  state = { RememberMe: false,
+           error: null }; 
 
+    handleCheckbox = () => {
+      console.log('qqqqq', this.state.RememberMe)
+      this.setState({ RememberMe: this.Checkbox.current.checked });
+    };
+    
   onLogon = event => {
     event.preventDefault();
     this.props
@@ -37,8 +44,11 @@ class LoginComponent extends React.Component {
       <div className="container" style={{ paddingTop: '10em' }}>
         <div className="row justify-content-center">
           <div className="col-md-4">
-            <div className="form-group row">
-              <img src={logo} className="logo title" alt="logo" style={{ width: '350px', height: 'auto' }} />
+            <div className="col-md-12">
+
+              <img src={logo}   alt="logo" style={{ width: '100%' }} />
+              <br />
+              <br />
             </div>
             <form onSubmit={this.onLogon}>
               {this.state.error && (
@@ -71,6 +81,17 @@ class LoginComponent extends React.Component {
                   ref={this.password}
                 />
               </div>
+              <label>
+              <input
+                    
+                    type="checkbox"
+                    id="RememberMe"
+                    ref={this.Checkbox}
+                    onChange={this.handleCheckbox}
+                    checked={this.state.RememberMe}                  
+                    /> Remember me </label>
+                  <br />
+           
               <div className="form-group row">
                 <input
                   className="form-control col-md-12 btn btn-primary"

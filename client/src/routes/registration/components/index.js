@@ -60,8 +60,10 @@ class RegisterComponent extends React.Component {
       <div className="container" style={{ paddingTop: '10em' }}>
         <div className="row justify-content-center">
           <div className="col-md-4">
-            <div className="form-group row">
-             <img src={logo} className="logo title" alt="logo" style={{ width: '350px', height: 'auto' }}/>
+            <div className="col-md-12">
+             <img src={logo}  alt="logo" style={{ width: '100%' }}/>
+             <br />
+             <br />
             </div>
             <form onSubmit={this.onRegister}>
               {this.state.error && (
