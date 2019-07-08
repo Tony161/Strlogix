@@ -9,13 +9,11 @@ import ProfileComponent from './components';
 // import logoutUserAction from '../../../modules/auth/actions/logout';
 
 class ProfileContainer extends React.Component {
-  gotoAddWedding = () => this.props.history.push('/add_wedding');
-  gotoLogin = () => this.props.history.push('/login');
-
+  
   render() {
     return (
       <ProfileComponent
-        gotoLogin={this.gotoLogin}
+        profile={this.props.profile}
         getData={this.props.getData}
         updateData={this.props.updateData}
         auth={this.props.auth}
@@ -32,10 +30,11 @@ const select = (state, props) => ({
   // error: state.error,
 });
 
+
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      profile: profileAction,
+      myProfile: profileAction,
       getData: getDataAction,
       updateData: updateDataAction,
     },
