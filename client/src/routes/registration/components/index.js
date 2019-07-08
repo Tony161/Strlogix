@@ -48,7 +48,7 @@ class RegisterComponent extends React.Component {
           if (res.value.result !== 'Ok') {
             this.setState({ error: 'error' });
           } else {
-            this.props.gotoProfile(this.email.current.value);
+            this.props.gotoProfile();
           }
         });
     }
@@ -149,7 +149,5 @@ class RegisterComponent extends React.Component {
     );
   }
 }
-
-// export default RegisterComponent;
 
 export default withRouter(RegisterComponent);

@@ -6,12 +6,8 @@ import getDataAction from '../../modules/profile/actions/get';
 import updateDataAction from '../../modules/profile/actions/update';
 import profileAction from '../../modules/profile/actions/profile';
 import ProfileComponent from './components';
-// import logoutUserAction from '../../../modules/auth/actions/logout';
 
 class ProfileContainer extends React.Component {
-
-  gotoLogin = () => this.props.history.push('/login');
-
   render() {
     return (
       <ProfileComponent
@@ -27,8 +23,6 @@ class ProfileContainer extends React.Component {
 const select = (state, props) => ({
   profile: state.profile,
   auth: state.auth,
-  // images: state.images,
-  // error: state.error,
 });
 
 const mapDispatchToProps = dispatch =>

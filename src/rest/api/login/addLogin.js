@@ -1,11 +1,11 @@
 const connect = require('../../../db/connect');
 
-const update = (req, res) => {
-  console.log(req.body);
-  var connection = connect();
+const addLogin = (req, res) => {
+  const query = 'select * from users where email= ? and password= ?';
+  const connection = connect();
   connection.query(
-    'UPDATE users SET role= ?, active = ? WHERE id= ?',
-    [req.body.role, req.body.active, req.params.id],
+    query,
+    [req.body.email, req.body.password],
     (err, rows, fields) => {
       if (!err) {
         res.send(rows);
@@ -17,4 +17,4 @@ const update = (req, res) => {
   );
 };
 
-module.exports = update;
+module.exports = addLogin;
