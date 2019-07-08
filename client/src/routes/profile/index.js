@@ -18,6 +18,8 @@ class ProfileContainer extends React.Component {
         gotoLogin={this.gotoLogin}
         getData={this.props.getData}
         updateData={this.props.updateData}
+        auth={this.props.auth}
+
       />
     );
   }

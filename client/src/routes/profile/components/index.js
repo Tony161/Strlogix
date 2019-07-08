@@ -5,49 +5,36 @@ import s from './style.module.css';
 import logo from '../../../images/StreetLogix_Logo_1.png';
 
 class ProfileComponent extends React.Component {
-  constructor(props) {
-    super(props)
-  }
+
   state = {
+
     isSubmitted: false,
   };
-
-  getDataProfile = event => {
-    var email;
-    event.preventDefault();
-    this.props.getData(email);
-  };
-
+  // componentDidMount = () => {
+  //   this.props.getData(this.props.auth.action.email)
+  // }
   render() {
     return (
-      <div>
-        <div className={s.one}>
-          <img src={logo} alt="logo" style={{height: '3em'}} />
-        </div>
-        <div style={{ display: 'flex' }}>
-          <div
-            style={{
-              height: '100vh',
-              width: '5em',
-              backgroundColor: 'lightblue',
-            }}
-          />
-          <div style={{ display: 'flex', paddingLeft: '20px', paddingTop: '20px' }}>
-            <div className="text-center">
-              <div style={{ fontSize: '3em' }}>My Profile</div>
-              <div style={{backgroundColor: "blue", width:"200px", height:"180px", borderRadius:"50%"}}>      
-              <img src={image1} alt="photo" />
-              </div>
-              <div className="profile-card-name">Vasily</div>
-              <button type="button" class="btn btn-rounded">
-                Edit My Profile
-              </button>
+      <div >
+      <div className={s.one}><img src={logo} style={{height:"3em", marginLeft:"20px", marginTop:"20px"}} alt='logo' /></div>
+        <div style={{display: "flex"}}>
+         <div style={{height:"100vh", width:"5em", backgroundColor:"lightblue"}}></div>
+          <div style={{ display:"flex", paddingLeft: "20px", paddingTop: "20px"}}>
+
+           <div className="text-center">
+            <div style={{fontSize:"3em"}}>My profile</div>
+
+             <img src={image1} alt="photoalt" />
+
+							<div className="profile-card-name">Vasily</div>
+							  <button type="button" className="btn btn-rounded">Edit My Profile</button>
+							</div> 
             </div>
 
             <div
-              style={{fontSize: '1.5em',
-                paddingLeft: '30px',
-                marginTop: '3em',
+              style={{fontSize:'1.5em',
+                paddingLeft:'30px',
+                marginTop:'3em',
               }}
             >
               <p><div>First Name</div></p>
@@ -58,7 +45,10 @@ class ProfileComponent extends React.Component {
             </div>
           </div>
         </div>
-      </div>
+
+      
+
+
     );
   }
 }
