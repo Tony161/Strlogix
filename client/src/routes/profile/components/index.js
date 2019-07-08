@@ -11,7 +11,12 @@ class ProfileComponent extends React.Component {
   };
 
   componentDidMount = () => {
-    this.props.getData(this.props.auth.action.email)
+    this.props.getData(this.props.auth.action.email )
+  }
+
+  editProfile = (firstName,lastName,title) => {
+    this.props.updateData(firstName,lastName,title);
+
   }
 
   render() {

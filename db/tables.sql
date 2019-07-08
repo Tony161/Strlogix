@@ -9,5 +9,6 @@ CREATE TABLE users (
   firstName VARCHAR(32) NOT NULL,
   lastName VARCHAR(32) NOT NULL,
   title VARCHAR(32) NOT NULL,
+  role VARCHAR(32) NOT NULL DEFAULT 'user',
   active BOOLEAN
 );
