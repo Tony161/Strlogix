@@ -1,4 +1,4 @@
 #!/bin/sh
 
-cat $1 | mysql -u root -p MyStrongPass
+cat $1 | mysql -u root -p
 #pass=12#$qwER

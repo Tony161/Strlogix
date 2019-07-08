@@ -1,4 +1,5 @@
 import React from 'react';
+import { createStore } from 'redux';
 import { withRouter } from 'react-router';
 import logo from '../../../images/StreetLogix_Logo_1.png';
 
@@ -12,7 +13,7 @@ class LoginComponent extends React.Component {
   state = { RememberMe: false, error: null };
 
   handleCheckbox = () => {
-    console.log('qqqqq', this.state.RememberMe);
+
     this.setState({ RememberMe: this.Checkbox.current.checked });
   };
 
@@ -20,7 +21,18 @@ class LoginComponent extends React.Component {
     event.preventDefault();
     this.props
       .onLogonUser(this.email.current.value, this.password.current.value)
-      .then(() => this.props.gotoProfile());
+
+
+      .then(response => {
+        console.log(response.value.status);
+        if (response.value.status !== 'Wrong Password or Email') {
+          this.props.gotoProfile();
+          return response;
+        } else {
+          this.setState({ error: response.value.status });
+        }
+      });
+
   };
 
   recoverPassword = event => {
@@ -57,14 +69,6 @@ class LoginComponent extends React.Component {
                   type="email"
                   placeholder="Email"
                   ref={this.email}
-                />
-              </div>
-              <div className="form-group row" style={{ display: 'none' }}>
-                <input
-                  className="form-control col-md-12"
-                  type="phone"
-                  placeholder="phone"
-                  ref={this.phone}
                 />
               </div>
               <div className="form-group row" style={{ position: 'relative' }}>
