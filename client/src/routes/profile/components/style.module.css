@@ -3,3 +3,30 @@
   width: 100%;
   background-color: lightblue;
 }
+.two {
+  height: 700px;
+  width: 5em;
+  background-color: lightblue;
+}
+.logo {
+  height: 3em;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+.title {
+  font-weight: bold;
+  font-size: 2.5em;
+}
+.ava {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  background-color: red;
+}
+.image {
+  height: 11.5em;
+  width: 11.5em;
+  background-color: lightgrey;
+  margin-top: 30px;
+  border-radius:50%;
+}
