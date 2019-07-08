@@ -19,6 +19,7 @@ class ProfileContainer extends React.Component {
         getData={this.props.getData}
         updateData={this.props.updateData}
         auth={this.props.auth}
+        profile={this.props.profile}
       />
     );
   }

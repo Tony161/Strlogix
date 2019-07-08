@@ -7,19 +7,22 @@ import logo from '../../../images/StreetLogix_Logo_1.png';
 class ProfileComponent extends React.Component {
   state = {
 
+
+    profile: null,
     isSubmitted: false,
   };
 
   componentDidMount = () => {
-    this.props.getData(this.props.auth.action.email )
+
+    this.props.getData(this.props.auth.action.email)
+    .then(response => this.setState({profile: response.value.data[0]}),
+    )
   }
 
-  editProfile = (firstName,lastName,title) => {
-    this.props.updateData(firstName,lastName,title);
-
-  }
+  // editProfile = (firstName,LastName,Title)
 
   render() {
+    console.log('111', this.state.profile)
     return (
       <div >
       <div className={s.one}><img src={logo} style={{height: "3em"}} alt='logo' /></div>
