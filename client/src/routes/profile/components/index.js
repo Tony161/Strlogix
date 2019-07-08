@@ -5,24 +5,27 @@ import s from './style.module.css';
 import logo from '../../../images/StreetLogix_Logo_1.png';
 
 class ProfileComponent extends React.Component {
-  state = {
-
-
-    profile: null,
-    isSubmitted: false,
-  };
-
-  componentDidMount = () => {
-
-    this.props.getData(this.props.auth.action.email)
-    .then(response => this.setState({profile: response.value.data[0]}),
-    )
+  constructor(props) {
+    super(props);
+    this.state = {isSubmitted: false};
   }
-
+  componentDidMount() {
+    try {
+      console.log('componentDidMount');
+       this.props.getData(this.props.auth.action.email);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   // editProfile = (firstName,LastName,Title)
 
   render() {
-    console.log('111', this.state.profile)
+    console.log('asdasasd', this.props.profile.data);
+    if(this.props.profile.data){
+    // const { firstName, lastName, title } = this.props.profile.data;
+       let x = this.props.profile.data;
+       console.log(x.firstName, x.lastName, x.title);
+    }
     return (
       <div >
       <div className={s.one}><img src={logo} style={{height: "3em"}} alt='logo' /></div>
@@ -40,11 +43,11 @@ class ProfileComponent extends React.Component {
 							</div>
 
               <div style={{fontSize:"1.5em", paddingLeft: "30px", marginTop: "3em"}}>
-              <div>First Name</div>
-              <div>Last Name</div>
-              <div>Title</div>
-              <div>email</div>
-              <div>role</div>
+              <div>First Name </div>
+              <div>Last Name  </div>
+              <div>Title </div>
+              <div>email </div>
+              <div>role </div>
 
               </div>
             </div>
