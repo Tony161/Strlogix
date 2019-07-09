@@ -13,7 +13,6 @@ const addLogin = (req, res) => {
       } else if (rows.length !== 0) {
         // res.send(rows[0].firstName);
         res.json({ loggedIn: true, status: 'Ok', email: rows[0].email });
-        console.log(JSON.stringify(rows, null, 2));
       } else {
         // res.send('Wrong Password or Email');
         res.json({ loggedIn: false, status: 'Wrong Password or Email' });

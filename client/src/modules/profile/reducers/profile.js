@@ -8,6 +8,8 @@ export default (state = {}, action) => {
       return action.payload.data;
     case ActionTypes.DATA_UPDATE.FULFILLED:
       return { ...state, ...action.payload };
+    case ActionTypes.IMAGE:
+      return { ...state, ...action.payload };
     default:
       return state;
   }

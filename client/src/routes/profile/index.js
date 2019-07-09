@@ -6,6 +6,7 @@ import getDataAction from '../../modules/profile/actions/get';
 import updateDataAction from '../../modules/profile/actions/update';
 import profileAction from '../../modules/profile/actions/profile';
 import ProfileComponent from './components';
+import ImageAction from '../../modules/profile/actions/image';
 
 class ProfileContainer extends React.Component {
   render() {
@@ -15,6 +16,7 @@ class ProfileContainer extends React.Component {
         auth={this.props.auth}
         profile={this.props.profile}
         getData={this.props.getData}
+        image={this.props.image}
       />
     );
   }
@@ -31,6 +33,7 @@ const mapDispatchToProps = dispatch =>
       myProfile: profileAction,
       getData: getDataAction,
       updateData: updateDataAction,
+      image: ImageAction
     },
     dispatch,
   );

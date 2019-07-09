@@ -5,20 +5,27 @@ import s from './style.module.css';
 import logo from '../../../images/StreetLogix_Logo_1.png';
 
 class ProfileComponent extends React.Component {
-  state = { isSubmitted: false };
+  state = { isSubmitted: false,
+    isVisible: false,
+    role: null };
 
-  componentDidMount() {
-    this.props.getData(this.props.auth.action.email);
+ async componentDidMount() {
+   await this.props.getData(this.props.auth.action.email);
+   await this.setState({role: this.props.profile.role});
+     if( this.state.role === 'admin'){
+      this.setState({isVisible: true})
+    }
+
   }
 
-  editProfile = (firstName, lastName, title) => {
-    alert('soon');
-    console.log(this.props.updateData());
-  };
+  // editProfile = (firstName, lastName, title) => {
+  //   alert('soon');
+  //   console.log(this.props.updateData(this.props.auth.action.email));
+  // };
 
   render() {
     const { firstName, lastName, title, email, role } = this.props.profile;
-
+    console.log('1111', this.state.isVisible)
     return (
       <div>
         <div className={s.one}>
@@ -35,7 +42,7 @@ class ProfileComponent extends React.Component {
                 <div className={s.image}>
                   <img src={image1} alt="image" />
                 </div>
-                <div style={{ marginTop: '30px' }}>
+                {!this.state.isVisible && (    <div style={{ marginTop: '30px' }}>
                   <button
                     type="button"
                     className="btn btn-rounded"
@@ -43,7 +50,7 @@ class ProfileComponent extends React.Component {
                   >
                     Edit My Profile
                   </button>
-                </div>
+                </div>)}
               </div>
             </div>
           </div>
