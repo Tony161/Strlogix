@@ -7,7 +7,7 @@ const get = (req, res) => {
     [req.params.email],
     (err, rows, fields) => {
       if (!err) {
-        res.send(rows);
+        res.send(rows[0]);
         console.log(JSON.stringify(rows, null, 2));
       } else {
         console.log(err);
