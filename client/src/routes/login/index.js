@@ -3,8 +3,6 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import logonUserAction from '../../modules/auth/actions/logon';
-// import getLoginAction from '../../modules/getLogin/actions/get';
-
 import LoginComponent from './components';
 
 class LoginContainer extends React.Component {
@@ -29,7 +27,6 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       logonUser: logonUserAction,
-      // getLogin: getLoginAction
     },
     dispatch,
   );

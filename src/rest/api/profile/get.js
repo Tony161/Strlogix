@@ -5,10 +5,9 @@ const get = (req, res) => {
   connection.query(
     'SELECT * FROM users WHERE email = ?',
     [req.params.email],
-    (err, rows, fields) => {
+    (err, result, fields) => {
       if (!err) {
-        res.send(rows[0]);
-        console.log(JSON.stringify(rows, null, 2));
+        res.send(result[0]);
       } else {
         console.log(err);
       }

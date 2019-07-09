@@ -10,7 +10,6 @@ export default (email, password) => ({
       {
         headers: {
           'Content-Type': 'application/json',
-          // 'Target-URL': 'https://api.hitchhero.com/user/login',
         },
       },
     )

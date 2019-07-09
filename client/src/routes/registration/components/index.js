@@ -152,6 +152,4 @@ class RegisterComponent extends React.Component {
   }
 }
 
-// export default RegisterComponent;
-
 export default withRouter(RegisterComponent);

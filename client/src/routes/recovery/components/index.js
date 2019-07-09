@@ -8,8 +8,8 @@ class RestoreComponent extends React.Component {
 
   onRecovery = event => {
     event.preventDefault();
-     this.props.onRestoreUser(this.email.current.value)
-       console.log(this.props.data)
+    this.props.onRestoreUser(this.email.current.value);
+    console.log(this.props.data);
   };
 
   render() {

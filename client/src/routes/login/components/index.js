@@ -21,10 +21,7 @@ class LoginComponent extends React.Component {
     event.preventDefault();
     this.props
       .onLogonUser(this.email.current.value, this.password.current.value)
-
-
       .then(response => {
-        console.log(response.value.status);
         if (response.value.status !== 'Wrong Password or Email') {
           this.props.gotoProfile();
           return response;
