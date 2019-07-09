@@ -5,6 +5,7 @@ import s from './style.module.css';
 import logo from '../../../images/StreetLogix_Logo_1.png';
 
 class ProfileComponent extends React.Component {
+
   constructor(props) {
     super(props);
     this.firstName = React.createRef();
@@ -19,9 +20,28 @@ class ProfileComponent extends React.Component {
   
     //  console.log("ssssss",this.props.getData)
   
+
+
+
+  state = {
+
+    isSubmitted: false,
+  };
+
+
+  // componentDidMount = () => {
+  //   this.props.getData(this.props.auth.action.email )
+  // }
+
+  editProfile = (firstName,lastName,title) => {
+    this.props.updateData(firstName,lastName,title);
+
+  }
+
   render() {
     const {firstName, lastName, title, email, role} = this.props.profile;
     return (
+
         <div>
            <div className={s.one}>
              <div><img src={logo} className={s.logo} alt='logo'/></div>
@@ -63,11 +83,13 @@ class ProfileComponent extends React.Component {
                   <div>Role</div>
               </div>
           )}
-                 
-
-                 
+                     
             </div>
-        </div> 
+          </div>
+        
+
+
+
 
     );
   }
