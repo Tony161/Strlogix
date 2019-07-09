@@ -48,9 +48,7 @@ class RegisterComponent extends React.Component {
           if (res.value.result !== 'Ok') {
             this.setState({ error: 'error' });
           } else {
-
-            this.props.gotoProfile(this.email.current.value);
-
+            this.props.gotoProfile();
           }
         });
     }
