@@ -12,7 +12,7 @@ class RegisterContainer extends React.Component {
       <RegisterComponent
         onRegisterUser={this.props.createUser}
         gotoProfile={this.gotoProfile}
-        userCreation={this.props.user.creation}
+        user={this.props.user}
       />
     );
   }

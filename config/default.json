@@ -7,7 +7,7 @@
   "db": {
     "host": "localhost",
     "user": "root",
-    "password": "MyStrongPass",
+    "password": "12#$qwER",
     "database": "streetlogix"
   }
 }

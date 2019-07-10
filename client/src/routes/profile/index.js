@@ -9,6 +9,7 @@ import ProfileComponent from './components';
 import ImageAction from '../../modules/profile/actions/image';
 
 class ProfileContainer extends React.Component {
+  gotoUserManagment = () => this.props.history.push('/userManagment');
   render() {
     return (
       <ProfileComponent
@@ -17,6 +18,7 @@ class ProfileContainer extends React.Component {
         profile={this.props.profile}
         getData={this.props.getData}
         image={this.props.image}
+        gotoUserManagment={this.gotoUserManagment}
       />
     );
   }
