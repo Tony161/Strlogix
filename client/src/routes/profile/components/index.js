@@ -22,17 +22,13 @@ class ProfileComponent extends React.Component {
     this.setState({ isEdit: !this.state.isEdit });
   };
 
-  async componentDidMount() {
-    if (this.props.auth.action.email) {
-      await this.props.getData(this.props.auth.action.email);
-    } else {
-      await this.props.getData();
-    }
-    localStorage.setItem('email', this.props.auth.action.email);
-    await this.setState({ roleAdmin: this.props.profile.role });
-    if (this.state.roleAdmin === 'admin') {
-      this.setState({ isVisible: true });
-    }
+  async componentDidMount () {
+    await this.props.getData(this.props.auth.action.email);
+    localStorage.setItem ('email', this.props.auth.action.email);
+    await this.setState({roleAdmin: this.props.profile.role});
+       if(this.state.roleAdmin === 'admin') {
+        this.setState({isVisible: true})
+      }
   }
 
   editProfile = () => {
@@ -52,59 +48,40 @@ class ProfileComponent extends React.Component {
   render() {
     const { firstName, lastName, title, email, role } = this.props.profile;
     return (
-      <div>
-        <div className={s.one}>
-          <div>
-            <img src={logo} className={s.logo} alt="logo" />
-          </div>
-        </div>
-        <div style={{ display: 'flex' }}>
-          <div className={s.two} />
-          <div className="text-center">
-            <div style={{ margin: '2em 0em 0em 2.5em' }}>
-              <span className={s.title}>My Profile</span>
-              <div className="profile-card">
-                <div className={s.image}>
-                  <img src={image1} alt="image" />
-                </div>
-                <div style={{ marginTop: '2em' }}>
-                  {!this.state.isEdit ? (
-                    <div>
-                      <button
-                        type="button"
-                        onClick={this.toggleState}
-                        className="btn btn-rounded"
-                      >
-                        Edit My Profile
-                      </button>
-                      {this.state.isVisible ? (
-                        <div style={{ marginTop: '2em' }}>
-                          <button type="button" className="btn btn-rounded">
-                            Manage Users
-                          </button>
-                        </div>
-                      ) : (
-                        <div />
-                      )}
-                    </div>
-                  ) : (
-                    <div>
-                      <button
-                        type="button"
-                        onClick={this.saveBtn}
-                        className="btn btn-rounded"
-                      >
-                        Save
-                      </button>
-                      <button
-                        type="button"
-                        onClick={this.toggleState}
-                        className="btn btn-rounded"
-                      >
-                        Cancel
-                      </button>
-                    </div>
-                  )}
+        <div>
+           <div className={s.one}>
+             <div><img src={logo} className={s.logo} alt='logo'/></div>
+           </div>
+           <div style={{display:"flex"}}>
+             <div className={s.two}></div>
+                <div className="text-center">
+                 <div style={{margin:"2em 0em 0em 2.5em"}}>
+                  <span className={s.title}>My Profile</span>
+                    <div className="profile-card">
+							        <div className={s.image}>
+							   	      <img src={image1} alt="image" />
+							        </div>
+                      <div style={{marginTop:"2em"}}>
+                        {!this.state.isEdit ? (
+                          <div>
+							             <button type="button"  onClick={this.toggleState} className="btn btn-rounded">Edit My Profile</button>
+                            {this.state.isVisible ? (
+                              <div style={{marginTop:"2em"}}>
+                                <button type="button" className="btn btn-rounded">Manage Users</button>
+                              </div>
+                                 ) : (
+                                    <div></div>
+                                 )}
+                          </div>
+                        ) : (
+                          <div>
+                          <button type="button"  onClick={this.saveBtn} className="btn btn-rounded">Save</button>
+                          <button type="button"  onClick={this.toggleState} className="btn btn-rounded">Cancel</button>
+                          </div>
+                        )}
+                      </div>
+						        </div>
+                  </div>
                 </div>
               </div>
             </div>
