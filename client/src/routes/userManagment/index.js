@@ -6,7 +6,6 @@ import getAllDataAction from '../../modules/userManagment/actions/getAll';
 import updateDataAction from '../../modules/userManagment/actions/update';
 import UserManagmentComponent from './components';
 
-
 // import profileAction from '../../modules/profile/actions/profile';
 
 class UserManagmentContainer extends React.Component {
@@ -26,7 +25,7 @@ class UserManagmentContainer extends React.Component {
 const select = (state, props) => ({
   profile: state.profile,
   auth: state.auth,
-  userManagment: state.userManagment
+  userManagment: state.userManagment,
 });
 
 const mapDispatchToProps = dispatch =>

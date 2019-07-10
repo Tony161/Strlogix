@@ -27,14 +27,13 @@ const select = (state, props) => ({
   auth: state.auth,
 });
 
-
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       myProfile: profileAction,
       getData: getDataAction,
       updateData: updateDataAction,
-      image: ImageAction
+      image: ImageAction,
     },
     dispatch,
   );
