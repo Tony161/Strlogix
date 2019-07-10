@@ -33,7 +33,7 @@ const mapDispatchToProps = dispatch =>
       myProfile: profileAction,
       getData: getDataAction,
       updateData: updateDataAction,
-      image: ImageAction
+      image: ImageAction,
     },
     dispatch,
   );
