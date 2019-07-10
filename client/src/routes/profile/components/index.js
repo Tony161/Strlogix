@@ -29,9 +29,7 @@ class ProfileComponent extends React.Component {
     await this.setState({roleAdmin: this.props.profile.role});
        if(this.state.roleAdmin === 'admin') {
         this.setState({isVisible: true})
-      } else {
-        this.setState({isVisible: false})
-      };
+      }
   }
 
   editProfile = () => {
@@ -67,7 +65,7 @@ class ProfileComponent extends React.Component {
                         {!this.state.isEdit ? (
                           <div>
 							             <button type="button"  onClick={this.toggleState} className="btn btn-rounded">Edit My Profile</button>
-                            {!this.state.isVisible ? (
+                            {this.state.isVisible ? (
                               <div style={{marginTop:"2em"}}>
                                 <button type="button" className="btn btn-rounded">Manage Users</button>
                               </div>
