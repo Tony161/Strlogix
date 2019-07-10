@@ -1,6 +1,6 @@
 import ActionTypes from '../constants/actionTypes';
 
-export default ({data}) => ({
+export default (data) => ({
   type: ActionTypes.USER_MANAGMENT,
-  payload: {data},
+  payload: data,
 });
