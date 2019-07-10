@@ -4,7 +4,6 @@ import { withRouter } from 'react-router';
 import logo from '../../../images/StreetLogix_Logo_1.png';
 import s from '../../profile/components/style.module.css'
 
-
 class ProfileComponent extends React.Component {
   state = { isAdmin: false, userManagment: null, showTable: false };
 
@@ -32,7 +31,6 @@ class ProfileComponent extends React.Component {
 }
 
   render() {
-     
     return (
       <div>
         <div className={s.one}>
