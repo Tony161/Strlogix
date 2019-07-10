@@ -5,7 +5,7 @@ const getAll = (req, res) => {
   connection.query('SELECT * FROM users', (err, rows, fields) => {
     if (!err) {
       // res.send(rows);
-      res.json({rows});
+      res.json(rows);
     } else {
       console.log(err);
     }
