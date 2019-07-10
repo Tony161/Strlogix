@@ -6,15 +6,30 @@ import s from '../../profile/components/style.module.css'
 
 
 class ProfileComponent extends React.Component {
-  state = { isAdmin: false,
-  data: null,
-  };
+  state = { isAdmin: false, userManagment: null, showTable: false };
 
- async componentDidMount() {
-  await this.props.getData();
-  await this.setState({data: this.props.userManagment})
-  console.log('aaaaaaaa', this.props.userManagment)
- }
+  async componentDidMount() {
+    await this.props.getData();
+    await this.setState({ userManagment: this.props.userManagment });
+    await this.setState({ showTable: true });
+  }
+
+ renderTableData() {
+  return this.state.userManagment.map((data, index) => {
+    const { id, firstName, lastName, title, role, email, active } = data; //destructuring
+    return (
+      <tr key={index}>
+        <td>{id}</td>
+        <td>{firstName}</td>
+        <td>{lastName}</td>
+        <td>{title}</td>
+        <td>{role}</td>
+        <td>{email}</td>
+        <td>{active}</td>
+      </tr>
+    );
+  });
+}
 
   render() {
      
@@ -39,8 +54,9 @@ class ProfileComponent extends React.Component {
                         <th>Active</th>
                       </tr>
                     </thead>
-                    <tbody>
-                      <tr>
+                      <tbody>{!this.state.showTable || this.renderTableData()}</tbody>
+                    {/* <tbody>
+                       <tr>
                         <td>AAA</td>
                         <td>SS</td>
                         <td>CC</td>
@@ -60,7 +76,7 @@ class ProfileComponent extends React.Component {
                           </select>
                         </td>
                       </tr>
-                    </tbody>
+                    </tbody>  */}
                   </table>
               </div>  
           </div>  
