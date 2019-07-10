@@ -13,7 +13,6 @@ class LoginComponent extends React.Component {
   state = { RememberMe: false, error: null };
 
   handleCheckbox = () => {
-
     this.setState({ RememberMe: this.Checkbox.current.checked });
   };
 
@@ -29,7 +28,6 @@ class LoginComponent extends React.Component {
           this.setState({ error: response.value.status });
         }
       });
-
   };
 
   recoverPassword = event => {
