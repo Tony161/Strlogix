@@ -1,6 +1,5 @@
 import React from 'react';
 import { withRouter } from 'react-router';
-// import image1 from '../../../images/image1.png';
 import logo from '../../../images/StreetLogix_Logo_1.png';
 import s from '../../profile/components/style.module.css';
 
@@ -57,28 +56,6 @@ class ProfileComponent extends React.Component {
                 </tr>
               </thead>
               <tbody>{!this.state.showTable || this.renderTableData()}</tbody>
-              {/* <tbody>
-                       <tr>
-                        <td>AAA</td>
-                        <td>SS</td>
-                        <td>CC</td>
-                        <td>discription of title</td>
-                        <td>
-                          <select>
-                            <option value="admin">Admin</option>
-                            <option value="user">User</option>
-                            <option value="editor">Editor</option>
-                          </select>
-                        </td>
-                        <td>mail@mail.ru</td>
-                        <td>
-                          <select>
-                              <option value="true">True</option>
-                              <option value="false">False</option>                             
-                          </select>
-                        </td>
-                      </tr>
-                    </tbody>  */}
             </table>
           </div>
         </div>

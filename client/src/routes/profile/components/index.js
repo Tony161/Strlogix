@@ -23,12 +23,13 @@ class ProfileComponent extends React.Component {
   };
 
   async componentDidMount() {
-    if (this.props.auth.action.email) {
+    if (Object.keys(this.props.auth).length !== 0) {
       await this.props.getData(this.props.auth.action.email);
+      localStorage.setItem('email', this.props.auth.action.email);
     } else {
-      await this.props.getData();
+      await this.props.getData(this.props.user.email);
+      localStorage.setItem('email', this.props.user.email);
     }
-    localStorage.setItem('email', this.props.auth.action.email);
     await this.setState({ roleAdmin: this.props.profile.role });
     if (this.state.roleAdmin === 'admin') {
       this.setState({ isVisible: true });
@@ -39,11 +40,12 @@ class ProfileComponent extends React.Component {
     const email = localStorage.getItem('email');
     this.props.updateData(
       email,
-      this.firstName.current.value,
-      this.lastName.current.value,
-      this.title.current.value,
+      this.firstName.value,
+      this.lastName.value,
+      this.title.value,
     );
   };
+
   saveBtn = () => {
     this.editProfile(this.firstName, this.lastName, this.title);
     this.toggleState();
@@ -65,7 +67,7 @@ class ProfileComponent extends React.Component {
               <span className={s.title}>My Profile</span>
               <div className="profile-card">
                 <div className={s.image}>
-                  <img src={image1} alt="image" />
+                  <img src={image1} alt="Photadd" />
                 </div>
                 <div style={{ marginTop: '2em' }}>
                   {!this.state.isEdit ? (
@@ -140,7 +142,8 @@ class ProfileComponent extends React.Component {
                 <input
                   type="text"
                   defaultValue={this.props.profile.firstName}
-                  ref={this.firstName}
+                  // ref={this.firstName}
+                  ref={input => (this.firstName = input)}
                 />
               </div>
               <div>
@@ -148,7 +151,7 @@ class ProfileComponent extends React.Component {
                 <input
                   type="text"
                   defaultValue={this.props.profile.lastName}
-                  ref={this.lastName}
+                  ref={input => (this.lastName = input)}
                 />
               </div>
               <div>
@@ -156,7 +159,7 @@ class ProfileComponent extends React.Component {
                 <input
                   type="text"
                   defaultValue={this.props.profile.title}
-                  ref={this.title}
+                  ref={input => (this.title = input)}
                 />
               </div>
               <div>Email</div>

@@ -11,7 +11,7 @@ const addUser = (req, res) => {
   connection.query(query, (error, results, fields) => {
     if (error) throw error;
     connection.end();
-    res.json({ result: 'Ok' });
+    res.json({ result: 'Ok', email: req.body.email });
   });
 };
 
