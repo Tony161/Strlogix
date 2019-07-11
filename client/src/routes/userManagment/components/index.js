@@ -4,16 +4,14 @@ import logo from '../../../images/StreetLogix_Logo_1.png';
 import s from '../../profile/components/style.module.css';
 
 class ProfileComponent extends React.Component {
-  state = { isAdmin: false, userManagment: null, showTable: false };
+  state = { isAdmin: false, userManagment: null };
 
-  async componentDidMount() {
-    await this.props.getData();
-    await this.setState({ userManagment: this.props.userManagment });
-    await this.setState({ showTable: true });
+  componentDidMount() {
+    this.props.getData();
   }
 
   renderTableData() {
-    return this.state.userManagment.map((data, index) => {
+    return this.props.userManagment.map((data, index) => {
       const { id, firstName, lastName, title, role, email, active } = data; //destructuring
       return (
         <tr key={index}>
@@ -55,7 +53,8 @@ class ProfileComponent extends React.Component {
                   <th>Active</th>
                 </tr>
               </thead>
-              <tbody>{!this.state.showTable || this.renderTableData()}</tbody>
+              <tbody>{Array.isArray(this.props.userManagment) && this.renderTableData()}</tbody>
+              {/* <tbody>{!this.state.showTable || this.renderTableData()}</tbody> */}
             </table>
           </div>
         </div>

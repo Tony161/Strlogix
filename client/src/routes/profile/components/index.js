@@ -24,16 +24,21 @@ class ProfileComponent extends React.Component {
 
   async componentDidMount() {
     if (Object.keys(this.props.auth).length !== 0) {
-      await this.props.getData(this.props.auth.action.email);
       localStorage.setItem('email', this.props.auth.action.email);
     } else {
-      await this.props.getData(this.props.user.email);
       localStorage.setItem('email', this.props.user.email);
     }
-    await this.setState({ roleAdmin: this.props.profile.role });
+    const email = localStorage.getItem('email');
+    await this.props.getData(email);
+     this.setState({ roleAdmin: this.props.profile.role });
     if (this.state.roleAdmin === 'admin') {
       this.setState({ isVisible: true });
     }
+  }
+  componentWillUpdate(){
+    const email = localStorage.getItem('email');
+    this.props.getData(email);
+
   }
 
   editProfile = () => {
