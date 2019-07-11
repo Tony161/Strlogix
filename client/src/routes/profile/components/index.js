@@ -3,6 +3,8 @@ import { withRouter } from 'react-router';
 import image1 from '../../../images/image1.png';
 import s from './style.module.css';
 import logo from '../../../images/StreetLogix_Logo_1.png';
+import DragAndDrop from './dragNDrop';
+import {NavLink} from 'react-router-dom';
 
 class ProfileComponent extends React.Component {
 
@@ -32,6 +34,11 @@ class ProfileComponent extends React.Component {
       }
   }
 
+  
+  componentWillUpdate() {
+    this.props.getData(this.props.auth.action.email);
+   };
+
   editProfile = () => {
     const email = localStorage.getItem('email')
     this.props.updateData(email,
@@ -43,6 +50,9 @@ class ProfileComponent extends React.Component {
    saveBtn =()=> {
      this.editProfile(this.firstName, this.lastName, this.title);
      this.toggleState();
+    //  componentWillUpdate() {
+    //  this.props.getData(this.props.auth.action.email);
+    // };
    }
 
   render() {
@@ -58,7 +68,8 @@ class ProfileComponent extends React.Component {
                  <div style={{margin:"2em 0em 0em 2.5em"}}>
                   <span className={s.title}>My Profile</span>
                     <div className="profile-card">
-							        <div className={s.image}>
+							        <div  className={s.image}>
+                        
 							   	      <img src={image1} alt="image" />
 							        </div>
                       <div style={{marginTop:"2em"}}>
@@ -67,7 +78,9 @@ class ProfileComponent extends React.Component {
 							             <button type="button"  onClick={this.toggleState} className="btn btn-rounded">Edit My Profile</button>
                             {this.state.isVisible ? (
                               <div style={{marginTop:"2em"}}>
+                              <NavLink to="/userManagment">
                                 <button type="button" className="btn btn-rounded">Manage Users</button>
+                                </NavLink>
                               </div>
                                  ) : (
                                     <div></div>
@@ -75,8 +88,8 @@ class ProfileComponent extends React.Component {
                           </div>
                         ) : (
                           <div>
-                          <button type="button"  onClick={this.saveBtn} className="btn btn-rounded">Save</button>
-                          <button type="button"  onClick={this.toggleState} className="btn btn-rounded">Cancel</button>
+                            <button type="button"  onClick={this.saveBtn} className="btn btn-rounded">Save</button>
+                            <button type="button"  onClick={this.toggleState} className="btn btn-rounded">Cancel</button>
                           </div>
                         )}
                       </div>
@@ -101,6 +114,7 @@ class ProfileComponent extends React.Component {
               </div>
           )}
             </div>
+            <DragAndDrop />
           </div>
     );
   }

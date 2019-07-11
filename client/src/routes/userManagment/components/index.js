@@ -16,10 +16,10 @@ class ProfileComponent extends React.Component {
 
  renderTableData() {
   return this.state.userManagment.map((data, index) => {
-    const { id, firstName, lastName, title, role, email, active } = data; //destructuring
+    const { firstName, lastName, title, role, email, active } = data; //destructuring
     return (
       <tr key={index}>
-        <td>{id}</td>
+        <td><input type="checkbox" /></td>
         <td>{firstName}</td>
         <td>{lastName}</td>
         <td>{title}</td>
