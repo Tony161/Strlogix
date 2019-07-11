@@ -12,9 +12,8 @@ class ProfileComponent extends React.Component {
 
   }
 
-<<<<<<< HEAD
  renderTableData() {
-  return this.state.userManagment.map((data, index) => {
+  return this.props.userManagment.map((data, index) => {
     const { firstName, lastName, title, role, email, active } = data; //destructuring
     return (
       <tr key={index}>
