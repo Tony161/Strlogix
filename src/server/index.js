@@ -14,13 +14,6 @@ app.use(cors());
 
 addRestRoutes(app);
 
-//Static file declaration
-// app.use(express.static(path.join(__dirname, '../../client/build')));
-
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname + '../../client/build/index.html'));
-// });
-
 const serverListenHost = config.get('server.listenHostname');
 const serverPort = config.get('server.port');
 

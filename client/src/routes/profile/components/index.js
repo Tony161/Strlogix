@@ -22,24 +22,36 @@ class ProfileComponent extends React.Component {
     this.setState({ isEdit: !this.state.isEdit });
   };
 
-  async componentDidMount () {
-    await this.props.getData(this.props.auth.action.email);
-    localStorage.setItem ('email', this.props.auth.action.email);
-    await this.setState({roleAdmin: this.props.profile.role});
-       if(this.state.roleAdmin === 'admin') {
-        this.setState({isVisible: true})
-      }
+
+  async componentDidMount() {
+    if (Object.keys(this.props.auth).length !== 0) {
+      localStorage.setItem('email', this.props.auth.action.email);
+    } else {
+      localStorage.setItem('email', this.props.user.email);
+    }
+    const email = localStorage.getItem('email');
+    await this.props.getData(email);
+     this.setState({ roleAdmin: this.props.profile.role });
+    if (this.state.roleAdmin === 'admin') {
+      this.setState({ isVisible: true });
+    }
+  }
+  
+  componentWillUpdate(){
+    const email = localStorage.getItem('email');
+    this.props.getData(email);
   }
 
   editProfile = () => {
     const email = localStorage.getItem('email');
     this.props.updateData(
       email,
-      this.firstName.current.value,
-      this.lastName.current.value,
-      this.title.current.value,
+      this.firstName.value,
+      this.lastName.value,
+      this.title.value,
     );
   };
+
   saveBtn = () => {
     this.editProfile(this.firstName, this.lastName, this.title);
     this.toggleState();
@@ -61,7 +73,7 @@ class ProfileComponent extends React.Component {
               <span className={s.title}>My Profile</span>
               <div className="profile-card">
                 <div className={s.image}>
-                  <img src={image1} alt="image" />
+                  <img src={image1} alt="Photadd" />
                 </div>
                 <div style={{ marginTop: '2em' }}>
                   {!this.state.isEdit ? (
@@ -75,7 +87,11 @@ class ProfileComponent extends React.Component {
                       </button>
                       {this.state.isVisible ? (
                         <div style={{ marginTop: '2em' }}>
-                          <button type="button" className="btn btn-rounded">
+                          <button
+                            type="button"
+                            className="btn btn-rounded"
+                            onClick={this.props.gotoUserManagment}
+                          >
                             Manage Users
                           </button>
                         </div>
@@ -132,7 +148,8 @@ class ProfileComponent extends React.Component {
                 <input
                   type="text"
                   defaultValue={this.props.profile.firstName}
-                  ref={this.firstName}
+                  // ref={this.firstName}
+                  ref={input => (this.firstName = input)}
                 />
               </div>
               <div>
@@ -140,7 +157,7 @@ class ProfileComponent extends React.Component {
                 <input
                   type="text"
                   defaultValue={this.props.profile.lastName}
-                  ref={this.lastName}
+                  ref={input => (this.lastName = input)}
                 />
               </div>
               <div>
@@ -148,7 +165,7 @@ class ProfileComponent extends React.Component {
                 <input
                   type="text"
                   defaultValue={this.props.profile.title}
-                  ref={this.title}
+                  ref={input => (this.title = input)}
                 />
               </div>
               <div>Email</div>

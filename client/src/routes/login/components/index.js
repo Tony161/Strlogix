@@ -1,5 +1,4 @@
 import React from 'react';
-import { createStore } from 'redux';
 import { withRouter } from 'react-router';
 import logo from '../../../images/StreetLogix_Logo_1.png';
 
@@ -30,10 +29,10 @@ class LoginComponent extends React.Component {
       });
   };
 
-  recoverPassword = event => {
+    ResetPassword = event => {
     event.preventDefault();
     const { history } = this.props;
-    history.push('/recovery');
+    history.push('/resetPassword');
   };
 
   signUp = event => {
@@ -97,7 +96,7 @@ class LoginComponent extends React.Component {
               </div>
               <div className="form-group row">
                 Forgot password? &nbsp;
-                <a href="/recovery" onClick={this.recoverPassword}>
+                <a href="/recovery" onClick={this.ResetPassword}>
                   Reset password
                 </a>
               </div>
