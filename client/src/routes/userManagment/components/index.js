@@ -15,7 +15,9 @@ class ProfileComponent extends React.Component {
       const { id, firstName, lastName, title, role, email, active } = data; //destructuring
       return (
         <tr key={index}>
-          <td>{id}</td>
+          <td>
+            <input type="checkbox" />
+          </td>
           <td>{firstName}</td>
           <td>{lastName}</td>
           <td>{title}</td>
@@ -53,7 +55,10 @@ class ProfileComponent extends React.Component {
                   <th>Active</th>
                 </tr>
               </thead>
-              <tbody>{Array.isArray(this.props.userManagment) && this.renderTableData()}</tbody>
+              <tbody>
+                {Array.isArray(this.props.userManagment) &&
+                  this.renderTableData()}
+              </tbody>
               {/* <tbody>{!this.state.showTable || this.renderTableData()}</tbody> */}
             </table>
           </div>

@@ -29,7 +29,7 @@ class LoginComponent extends React.Component {
       });
   };
 
-    ResetPassword = event => {
+  ResetPassword = event => {
     event.preventDefault();
     const { history } = this.props;
     history.push('/resetPassword');

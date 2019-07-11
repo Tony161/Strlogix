@@ -30,16 +30,16 @@ class ProfileComponent extends React.Component {
     }
     const email = localStorage.getItem('email');
     await this.props.getData(email);
-     this.setState({ roleAdmin: this.props.profile.role });
+    this.setState({ roleAdmin: this.props.profile.role });
     if (this.state.roleAdmin === 'admin') {
       this.setState({ isVisible: true });
     }
   }
-  componentWillUpdate(){
-    const email = localStorage.getItem('email');
-    this.props.getData(email);
+  // componentWillUpdate(){
+  //   const email = localStorage.getItem('email');
+  //   this.props.getData(email);
 
-  }
+  // }
 
   editProfile = () => {
     const email = localStorage.getItem('email');

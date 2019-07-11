@@ -9,9 +9,12 @@ import ResetPasswordComponent from './components';
 class ResetPasswordContainer extends React.Component {
   gotoLogin = () => this.props.history.push('/login');
   render() {
-    return <ResetPasswordComponent
-    onResetPasswordUser={this.props.resetPasswordUser}
-    gotoLogin={this.gotoLogin} />;
+    return (
+      <ResetPasswordComponent
+        onResetPasswordUser={this.props.resetPasswordUser}
+        gotoLogin={this.gotoLogin}
+      />
+    );
   }
 }
 
