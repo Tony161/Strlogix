@@ -19,6 +19,7 @@ class ProfileContainer extends React.Component {
         getData={this.props.getData}
         image={this.props.image}
         gotoUserManagment={this.gotoUserManagment}
+        user={this.props.user}
       />
     );
   }
@@ -27,6 +28,7 @@ class ProfileContainer extends React.Component {
 const select = (state, props) => ({
   profile: state.profile,
   auth: state.auth,
+  user: state.user,
 });
 
 const mapDispatchToProps = dispatch =>

@@ -8,7 +8,7 @@ const update = (req, res) => {
     (err, rows, fields) => {
       if (!err) {
         res.send(rows);
-        console.log(JSON.stringify(rows, null, 2));
+        // console.log(JSON.stringify(rows, null, 2));
       } else {
         console.log(err);
       }

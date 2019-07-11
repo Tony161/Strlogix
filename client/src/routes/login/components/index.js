@@ -1,5 +1,4 @@
 import React from 'react';
-import { createStore } from 'redux';
 import { withRouter } from 'react-router';
 import logo from '../../../images/StreetLogix_Logo_1.png';
 
