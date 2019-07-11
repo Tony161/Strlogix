@@ -9,6 +9,7 @@ import ProfileComponent from './components';
 import ImageAction from '../../modules/profile/actions/image';
 
 class ProfileContainer extends React.Component {
+  gotoUserManagment = () => this.props.history.push('/userManagment');
   render() {
     return (
       <ProfileComponent
@@ -17,6 +18,8 @@ class ProfileContainer extends React.Component {
         profile={this.props.profile}
         getData={this.props.getData}
         image={this.props.image}
+        gotoUserManagment={this.gotoUserManagment}
+        user={this.props.user}
       />
     );
   }
@@ -25,6 +28,7 @@ class ProfileContainer extends React.Component {
 const select = (state, props) => ({
   profile: state.profile,
   auth: state.auth,
+  user: state.user,
 });
 
 const mapDispatchToProps = dispatch =>
@@ -33,7 +37,7 @@ const mapDispatchToProps = dispatch =>
       myProfile: profileAction,
       getData: getDataAction,
       updateData: updateDataAction,
-      image: ImageAction
+      image: ImageAction,
     },
     dispatch,
   );
