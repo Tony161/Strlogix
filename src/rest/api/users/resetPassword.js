@@ -7,7 +7,7 @@ const resetPassword = (req, res) => {
     [req.body.new_password, req.params.email],
     (err, rows, fields) => {
       if (!err) {
-        res.send({rows, status: 'success'});
+        res.send({ rows, status: 'success' });
       } else {
         console.log(err);
       }

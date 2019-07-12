@@ -45,6 +45,25 @@ class ProfileComponent extends React.Component {
   });
 }
 
+  toggleState = () => {
+    this.setState({ isEdit: !this.state.isEdit });
+  };
+
+  editProfile = () => {
+    const email = localStorage.getItem('email');
+    this.props.updateData(
+      email,
+      this.firstName.value,
+      this.lastName.value,
+      this.title.value,
+    );
+  };
+
+  saveBtn = () => {
+    this.editProfile(this.firstName, this.lastName, this.title);
+    this.toggleState();
+  };
+
   render() {
     return (
       <div>
@@ -71,7 +90,10 @@ class ProfileComponent extends React.Component {
                   <th>Active</th>
                 </tr>
               </thead>
-              <tbody>{Array.isArray(this.props.userManagment) && this.renderTableData()}</tbody>
+              <tbody>
+                {Array.isArray(this.props.userManagment) &&
+                  this.renderTableData()}
+              </tbody>
               {/* <tbody>{!this.state.showTable || this.renderTableData()}</tbody> */}
             </table>
           </div>

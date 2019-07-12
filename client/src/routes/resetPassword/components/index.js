@@ -10,25 +10,26 @@ class ResetPasswordComponent extends React.Component {
     };
   }
 
-
   onResetPassword = event => {
     event.preventDefault();
     this.props
-      .onResetPasswordUser(this.email.current.value, this.password.current.value)
+      .onResetPasswordUser(
+        this.email.current.value,
+        this.password.current.value,
+      )
       .then(data => {
-          if (data.value.status === 'success') {
-            alert('New password has been set');
-           this.props.gotoLogin();
-          } else {
-            this.setState({
-              submitting: false,
-              submitted: false,
-              error: data.value.error,
-            });
-          }
+        if (data.value.status === 'success') {
+          alert('New password has been set');
+          this.props.gotoLogin();
+        } else {
+          this.setState({
+            submitting: false,
+            submitted: false,
+            error: data.value.error,
+          });
+        }
       });
   };
-
 
   render() {
     return (
@@ -41,14 +42,13 @@ class ResetPasswordComponent extends React.Component {
             <form onSubmit={this.onResetPassword}>
               <div className="form-group row">
                 <input
-                 className="form-control col-md-12"
+                  className="form-control col-md-12"
                   type="email"
                   placeholder="Email"
-                  ref={this.email} />
+                  ref={this.email}
+                />
               </div>
-              <div
-                className="form-group row"
-              >
+              <div className="form-group row">
                 <input
                   className="form-control col-md-12"
                   type="password"
@@ -70,7 +70,7 @@ class ResetPasswordComponent extends React.Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 export default ResetPasswordComponent;

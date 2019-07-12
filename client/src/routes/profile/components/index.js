@@ -31,15 +31,10 @@ class ProfileComponent extends React.Component {
     }
     const email = localStorage.getItem('email');
     await this.props.getData(email);
-     this.setState({ roleAdmin: this.props.profile.role });
+    this.setState({ roleAdmin: this.props.profile.role });
     if (this.state.roleAdmin === 'admin') {
       this.setState({ isVisible: true });
     }
-  }
-  
-  componentWillUpdate(){
-    const email = localStorage.getItem('email');
-    this.props.getData(email);
   }
 
   editProfile = () => {
@@ -148,7 +143,6 @@ class ProfileComponent extends React.Component {
                 <input
                   type="text"
                   defaultValue={this.props.profile.firstName}
-                  // ref={this.firstName}
                   ref={input => (this.firstName = input)}
                 />
               </div>
