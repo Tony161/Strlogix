@@ -4,11 +4,46 @@ import logo from '../../../images/StreetLogix_Logo_1.png';
 import s from '../../profile/components/style.module.css';
 
 class ProfileComponent extends React.Component {
-  state = { isAdmin: false, userManagment: null, isEditRole: false, isEditActive: true };
+   constructor(props) {
+     super(props)
+     
+   }
+  state = { isAdmin: true, userManagment: null };
 
   componentDidMount() {
     this.props.getData();
   }
+
+ renderTableData() {
+  return this.props.userManagment.map((data, index) => {
+    const { firstName, lastName, title, role, email, active } = data; //destructuring
+    return (
+      <tr key={index}>
+        <td><input type="checkbox" /></td>
+        <td>{firstName}</td>
+        <td>{lastName}</td>
+        <td>{title}</td>
+        {this.state.isAdmin ? (
+        <td>
+            <select>
+                <option value="admin">{role}</option>
+                <option value="user">user</option>
+                <option value="editor">editor</option>
+            </select>
+        </td>
+        ) : (<td>{role}</td>)}
+        <td>{email}</td>
+        <td>
+          <select>
+            <option>{active}</option>
+            <option>false</option>
+            <option>true</option>
+          </select>
+        </td>
+      </tr>
+    );
+  });
+}
 
   toggleState = () => {
     this.setState({ isEdit: !this.state.isEdit });
@@ -28,29 +63,6 @@ class ProfileComponent extends React.Component {
     this.editProfile(this.firstName, this.lastName, this.title);
     this.toggleState();
   };
-
-  renderTableData() {
-    return this.props.userManagment.map((data, index) => {
-      const { id, firstName, lastName, title, role, email, active } = data; //destructuring
-      return (
-        <tr key={index}>
-          <td>
-            <input type="checkbox" id={id} />
-          </td>
-          <td>{firstName}</td>
-          <td>{lastName}</td>
-          <td>{title}</td>
-          {!this.state.isEditRole ? (<td>{role}</td>) : (<div>2</div>)}
-          <td>{email}</td>
-          {!this.state.isEditActive ? (<td>{active}</td>) :
-            (<div><select className="EditActive">
-                    <options>1</options>
-                    <options>0</options>
-                  </select> </div>)}
-        </tr>
-      );
-    });
-  }
 
   render() {
     return (
@@ -73,7 +85,7 @@ class ProfileComponent extends React.Component {
                   <th>First Name</th>
                   <th>Last Name</th>
                   <th>Title</th>
-                  <th>Role</th>
+                  <th>role</th>
                   <th>Email</th>
                   <th>Active</th>
                 </tr>

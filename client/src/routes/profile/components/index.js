@@ -22,6 +22,7 @@ class ProfileComponent extends React.Component {
     this.setState({ isEdit: !this.state.isEdit });
   };
 
+
   async componentDidMount() {
     if (Object.keys(this.props.auth).length !== 0) {
       localStorage.setItem('email', this.props.auth.action.email);
@@ -45,11 +46,11 @@ class ProfileComponent extends React.Component {
       this.title.value,
     );
   };
-
   saveBtn = () => {
     this.editProfile(this.firstName, this.lastName, this.title);
     this.toggleState();
   };
+
 
   render() {
     const { firstName, lastName, title, email, role } = this.props.profile;
