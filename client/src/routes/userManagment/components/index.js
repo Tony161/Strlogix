@@ -4,11 +4,30 @@ import logo from '../../../images/StreetLogix_Logo_1.png';
 import s from '../../profile/components/style.module.css';
 
 class ProfileComponent extends React.Component {
-  state = { isAdmin: false, userManagment: null };
+  state = { isAdmin: false, userManagment: null, isEditRole: false, isEditActive: true };
 
   componentDidMount() {
     this.props.getData();
   }
+
+  toggleState = () => {
+    this.setState({ isEdit: !this.state.isEdit });
+  };
+
+  editProfile = () => {
+    const email = localStorage.getItem('email');
+    this.props.updateData(
+      email,
+      this.firstName.value,
+      this.lastName.value,
+      this.title.value,
+    );
+  };
+
+  saveBtn = () => {
+    this.editProfile(this.firstName, this.lastName, this.title);
+    this.toggleState();
+  };
 
   renderTableData() {
     return this.props.userManagment.map((data, index) => {
@@ -16,14 +35,18 @@ class ProfileComponent extends React.Component {
       return (
         <tr key={index}>
           <td>
-            <input type="checkbox" />
+            <input type="checkbox" id={id} />
           </td>
           <td>{firstName}</td>
           <td>{lastName}</td>
           <td>{title}</td>
-          <td>{role}</td>
+          {!this.state.isEditRole ? (<td>{role}</td>) : (<div>2</div>)}
           <td>{email}</td>
-          <td>{active}</td>
+          {!this.state.isEditActive ? (<td>{active}</td>) :
+            (<div><select className="EditActive">
+                    <options>1</options>
+                    <options>0</options>
+                  </select> </div>)}
         </tr>
       );
     });

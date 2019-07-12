@@ -35,11 +35,6 @@ class ProfileComponent extends React.Component {
       this.setState({ isVisible: true });
     }
   }
-  // componentWillUpdate(){
-  //   const email = localStorage.getItem('email');
-  //   this.props.getData(email);
-
-  // }
 
   editProfile = () => {
     const email = localStorage.getItem('email');
@@ -147,7 +142,6 @@ class ProfileComponent extends React.Component {
                 <input
                   type="text"
                   defaultValue={this.props.profile.firstName}
-                  // ref={this.firstName}
                   ref={input => (this.firstName = input)}
                 />
               </div>

@@ -9,7 +9,7 @@ class LoginComponent extends React.Component {
     this.password = React.createRef();
     this.Checkbox = React.createRef();
   }
-  state = { RememberMe: false, error: null };
+  state = { rememberMe: false, error: null };
 
   handleCheckbox = () => {
     this.setState({ RememberMe: this.Checkbox.current.checked });
@@ -29,7 +29,7 @@ class LoginComponent extends React.Component {
       });
   };
 
-  ResetPassword = event => {
+  resetPassword = event => {
     event.preventDefault();
     const { history } = this.props;
     history.push('/resetPassword');
@@ -80,7 +80,7 @@ class LoginComponent extends React.Component {
                   id="RememberMe"
                   ref={this.Checkbox}
                   onChange={this.handleCheckbox}
-                  checked={this.state.RememberMe}
+                  checked={this.state.rememberMe}
                 />{' '}
                 Remember me{' '}
               </label>
@@ -96,7 +96,7 @@ class LoginComponent extends React.Component {
               </div>
               <div className="form-group row">
                 Forgot password? &nbsp;
-                <a href="/recovery" onClick={this.ResetPassword}>
+                <a href="/recovery" onClick={this.resetPassword}>
                   Reset password
                 </a>
               </div>

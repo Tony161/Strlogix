@@ -3,4 +3,5 @@ module.exports = app => {
   app.use('/api/auth', require('./api/auth'));
   app.use('/api/profile', require('./api/profile'));
   app.use('/api/usersManagment', require('./api/usersManagment'));
+  app.use('/api/invitationUsers', require('./api/invitationUsers'));
 };
