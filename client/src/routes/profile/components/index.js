@@ -3,8 +3,6 @@ import { withRouter } from 'react-router';
 import image1 from '../../../images/image1.png';
 import s from './style.module.css';
 import logo from '../../../images/StreetLogix_Logo_1.png';
-// import DragAndDrop from './dragNDrop';
-// import {NavLink} from 'react-router-dom';
 
 class ProfileComponent extends React.Component {
   constructor(props) {

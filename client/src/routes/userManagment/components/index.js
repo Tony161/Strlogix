@@ -4,12 +4,14 @@ import logo from '../../../images/StreetLogix_Logo_1.png';
 import s from '../../profile/components/style.module.css';
 
 class ProfileComponent extends React.Component {
-
-  state = { isAdmin: false, userManagment: null };
+   constructor(props) {
+     super(props)
+     
+   }
+  state = { isAdmin: true, userManagment: null };
 
   componentDidMount() {
     this.props.getData();
-
   }
 
  renderTableData() {
@@ -21,9 +23,23 @@ class ProfileComponent extends React.Component {
         <td>{firstName}</td>
         <td>{lastName}</td>
         <td>{title}</td>
-        <td>{role}</td>
+        {this.state.isAdmin ? (
+        <td>
+            <select>
+                <option value="admin">{role}</option>
+                <option value="user">user</option>
+                <option value="editor">editor</option>
+            </select>
+        </td>
+        ) : (<td>{role}</td>)}
         <td>{email}</td>
-        <td>{active}</td>
+        <td>
+          <select>
+            <option>{active}</option>
+            <option>false</option>
+            <option>true</option>
+          </select>
+        </td>
       </tr>
     );
   });
@@ -50,7 +66,7 @@ class ProfileComponent extends React.Component {
                   <th>First Name</th>
                   <th>Last Name</th>
                   <th>Title</th>
-                  <th>Role</th>
+                  <th>role</th>
                   <th>Email</th>
                   <th>Active</th>
                 </tr>
@@ -66,33 +82,3 @@ class ProfileComponent extends React.Component {
 }
 
 export default withRouter(ProfileComponent);
-
-
-
-
-
-{/* <div>
-        <div className={s.one}>
-          <div><img src={logo} className={s.logo} alt='logo'/></div>
-        </div>
-          <div style={{display:"flex"}}>
-            <div className={s.two}></div>
-              <div style={{width:"100%", margin:"15px 0px 0px 15px"}}>
-                <span style={{fontSize:"2em"}}>Manage Users</span>
-                  <table style={{width:"100%"}}>
-
-                  <td>
-                          <select>
-                            <option value="admin">Admin</option>
-                            <option value="user">User</option>
-                            <option value="editor">Editor</option>
-                          </select>
-                        </td>
-                        <td>mail@mail.ru</td>
-                        <td>
-                          <select>
-                              <option value="true">True</option>
-                              <option value="false">False</option>                             
-                          </select>
-                        </td>
-                      </tr> */}
