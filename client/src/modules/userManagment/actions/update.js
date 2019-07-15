@@ -11,5 +11,5 @@ export default (id, role, active) => ({
         'Content-Type': 'application/json',
       },
     },
-  ).then(()=> ({id, role, active})),
+  ).then(()=> ({ ...role, ...active})),
 });

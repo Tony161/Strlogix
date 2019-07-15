@@ -1,8 +1,7 @@
 import create from '../../../utils/createReduxPromiseActionType';
 
 const actionTypes = {
-  USER_CREATE: create('USER_CREATE'),
-  RESET_PASSWORD: create('RESET_PASSWORD'),
+  USER_INVITE: create('USER_INVITE'),
 };
 
 export default actionTypes;

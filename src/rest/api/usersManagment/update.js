@@ -1,8 +1,8 @@
 const connect = require('../../../db/connect');
 
 const update = (req, res) => {
-  console.log(req.body);
   var connection = connect();
+  // console.log('11233', req.body.role, req.body.active, req.params);
   connection.query(
     'UPDATE users SET role= ?, active = ? WHERE id= ?',
     [req.body.role, req.body.active, req.params.id],
