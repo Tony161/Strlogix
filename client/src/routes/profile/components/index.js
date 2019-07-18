@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import { withRouter } from 'react-router';
 import DragAndDrop from './dragNDrop';
 import image1 from '../../../images/image1.png';
@@ -159,6 +160,17 @@ class ProfileComponent extends React.Component {
     this.toggleState();
   }
 
+  // handleUploadFile = (event) => {
+  //   const data = new FormData();
+  //   console.log(this.props.profile)
+  //   data.append('file', this.props.profile.image.image);
+  //   data.append('name', this.props.profile.image.name);
+  //   data.append('description', this.props.profile.image.type);
+  //   // '/files' is your node.js route that triggers our middleware
+  //   axios.post('http://localhost:3300/api/images/imageAdd', data).then((response) => {
+  //     console.log(response); // do something with the response
+  //   });
+  // }
 
   render() {
     const { firstName, lastName, title, email, role } = this.props.profile;
@@ -242,7 +254,7 @@ class ProfileComponent extends React.Component {
                       </button>
                           <button
                             type="button"
-                            onClick={this.toggleState}
+                            onClick={(this.toggleState)}
                             className="btn btn-rounded"
                           >
                             Cancel
