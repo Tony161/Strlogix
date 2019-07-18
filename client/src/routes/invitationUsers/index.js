@@ -24,7 +24,7 @@ const select = (state, props) => ({
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-     invitationUsers: invitationUsersAction,
+      invitationUsers: invitationUsersAction,
     },
     dispatch,
   );

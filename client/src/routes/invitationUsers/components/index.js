@@ -14,18 +14,18 @@ class InvitationUsersComponent extends React.Component {
 
   inviteUser = event => {
     event.preventDefault();
-      this.props
-        .invitationUser(
-          this.firstName.current.value,
-          this.lastName.current.value,
-          this.email.current.value,
-          this.title.current.value,
-        )
-        .then(res => {
-          if (res.value.result !== 'Ok') {
-            this.setState({ error: 'error' });
-          }
-        });
+    this.props
+      .invitationUser(
+        this.firstName.current.value,
+        this.lastName.current.value,
+        this.email.current.value,
+        this.title.current.value,
+      )
+      .then(res => {
+        if (res.value.result !== 'Ok') {
+          this.setState({ error: 'error' });
+        }
+      });
   };
 
   render() {
@@ -75,7 +75,7 @@ class InvitationUsersComponent extends React.Component {
                 />
               </div>
               <div className="form-group row">
-              <input
+                <input
                   className="form-control col-md-12"
                   type="text"
                   placeholder="Role"
