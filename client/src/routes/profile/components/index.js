@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import { withRouter } from 'react-router';
 import DragAndDrop from './dragNDrop';
 import image1 from '../../../images/image1.png';
@@ -63,7 +64,6 @@ class ProfileComponent extends React.Component {
     this.setState({ isEdit: !this.state.isEdit });
   };
 
-
   async componentDidMount() {
     if (Object.keys(this.props.auth).length !== 0) {
       localStorage.setItem('email', this.props.auth.action.email);
@@ -84,7 +84,6 @@ class ProfileComponent extends React.Component {
     //     file: { lastModified: this.props.weddingWizard.image.lastModified },
     //   });
     // }
-
   }
 
   removeImage = e => {
@@ -97,7 +96,6 @@ class ProfileComponent extends React.Component {
     this.setState({ file });
     this.showImage(file);
   };
-
 
   onChangeFile = event => {
     const file = event.target.files[0];
@@ -157,8 +155,19 @@ class ProfileComponent extends React.Component {
       image: this.state.image,
     });
     this.toggleState();
-  }
+  };
 
+  // handleUploadFile = (event) => {
+  //   const data = new FormData();
+  //   console.log(this.props.profile)
+  //   data.append('file', this.props.profile.image.image);
+  //   data.append('name', this.props.profile.image.name);
+  //   data.append('description', this.props.profile.image.type);
+  //   // '/files' is your node.js route that triggers our middleware
+  //   axios.post('http://localhost:3300/api/images/imageAdd', data).then((response) => {
+  //     console.log(response); // do something with the response
+  //   });
+  // }
 
   render() {
     const { firstName, lastName, title, email, role } = this.props.profile;
@@ -175,12 +184,12 @@ class ProfileComponent extends React.Component {
               <div style={{ margin: '2em 0em 0em 2.5em' }}>
                 <span className={s.title}>My Profile</span>
                 <div className="profile-card">
-                  <div >
+                  <div>
                     <FileNameHidden
                       type="file"
                       onChange={this.onChangeFile}
                       ref={input => (this.inputFile = input)}
-                    style={{ display: 'none' }}
+                      style={{ display: 'none' }}
                     />
                   </div>
                   <div onClick={this.onChangeImageClick} id="photo">
@@ -191,7 +200,7 @@ class ProfileComponent extends React.Component {
                           display={this.state.image ? 'none' : ''}
                         >
                           Choose File
-                    </ChooseFile>
+                        </ChooseFile>
                         <DelImage display={this.state.image ? '' : 'none'}>
                           <i
                             className="font-icon-close-2"
@@ -216,7 +225,7 @@ class ProfileComponent extends React.Component {
                           className="btn btn-rounded"
                         >
                           Edit My Profile
-                      </button>
+                        </button>
                         {this.state.isVisible ? (
                           <div style={{ marginTop: '2em' }}>
                             <button
@@ -225,30 +234,30 @@ class ProfileComponent extends React.Component {
                               onClick={this.props.gotoUserManagment}
                             >
                               Manage Users
-                          </button>
+                            </button>
                           </div>
                         ) : (
-                            <div />
-                          )}
+                          <div />
+                        )}
                       </div>
                     ) : (
-                        <div>
-                          <button
-                            type="button"
-                            onClick={(this.saveBtn, this.addImage)}
-                            className="btn btn-rounded"
-                          >
-                            Save
-                      </button>
-                          <button
-                            type="button"
-                            onClick={this.toggleState}
-                            className="btn btn-rounded"
-                          >
-                            Cancel
-                      </button>
-                        </div>
-                      )}
+                      <div>
+                        <button
+                          type="button"
+                          onClick={(this.saveBtn, this.addImage)}
+                          className="btn btn-rounded"
+                        >
+                          Save
+                        </button>
+                        <button
+                          type="button"
+                          onClick={this.toggleState}
+                          className="btn btn-rounded"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -268,41 +277,41 @@ class ProfileComponent extends React.Component {
                 <div>Role: &nbsp;{role}</div>
               </div>
             ) : (
-                <div
-                  style={{
-                    fontSize: '1.5em',
-                    marginLeft: '60px',
-                    marginTop: '3em',
-                  }}
-                >
-                  <div>
-                    First Name
-                <input
-                      type="text"
-                      defaultValue={this.props.profile.firstName}
-                      ref={input => (this.firstName = input)}
-                    />
-                  </div>
-                  <div>
-                    Last Name
-                <input
-                      type="text"
-                      defaultValue={this.props.profile.lastName}
-                      ref={input => (this.lastName = input)}
-                    />
-                  </div>
-                  <div>
-                    Title
-                <input
-                      type="text"
-                      defaultValue={this.props.profile.title}
-                      ref={input => (this.title = input)}
-                    />
-                  </div>
-                  <div>Email</div>
-                  <div>Role</div>
+              <div
+                style={{
+                  fontSize: '1.5em',
+                  marginLeft: '60px',
+                  marginTop: '3em',
+                }}
+              >
+                <div>
+                  First Name
+                  <input
+                    type="text"
+                    defaultValue={this.props.profile.firstName}
+                    ref={input => (this.firstName = input)}
+                  />
                 </div>
-              )}
+                <div>
+                  Last Name
+                  <input
+                    type="text"
+                    defaultValue={this.props.profile.lastName}
+                    ref={input => (this.lastName = input)}
+                  />
+                </div>
+                <div>
+                  Title
+                  <input
+                    type="text"
+                    defaultValue={this.props.profile.title}
+                    ref={input => (this.title = input)}
+                  />
+                </div>
+                <div>Email</div>
+                <div>Role</div>
+              </div>
+            )}
           </div>
         </form>
       </div>

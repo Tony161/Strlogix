@@ -9,7 +9,6 @@ import UserManagment from '../userManagment';
 import resetPassword from '../resetPassword';
 import inviteUsers from '../invitationUsers';
 
-
 export default () => (
   <section>
     <Switch>

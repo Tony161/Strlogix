@@ -1,7 +1,6 @@
 const connect = require('../../../db/connect');
 
 const addLogin = (req, res) => {
-  console.log(req.body);
   const query = 'select * from users where email= ? and password= ?';
   const connection = connect();
   connection.query(
