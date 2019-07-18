@@ -7,7 +7,7 @@ export default (state = {}, action) => {
     case ActionTypes.ALL_GET.FULFILLED:
       return action.payload.data;
     case ActionTypes.DATA_UPDATE.FULFILLED:
-      return { ...state, ...action.payload };
+      return state;
     default:
       return state;
   }

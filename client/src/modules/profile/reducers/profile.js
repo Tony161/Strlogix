@@ -8,8 +8,8 @@ export default (state = {}, action) => {
       return action.payload.data;
     case ActionTypes.PROFILE_UPDATE.FULFILLED:
       return { ...state, ...action.payload };
-    case ActionTypes.IMAGE:
-      return { ...state, ...action.payload };
+    case ActionTypes.IMAGE_ADD.FULFILLED:
+      return { ...state, ...action.payload.image };
     default:
       return state;
   }

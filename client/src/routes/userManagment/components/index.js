@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import logo from '../../../images/StreetLogix_Logo_1.png';
 import s from '../../profile/components/style.module.css';
+import { NavLink } from 'react-router-dom';
 
 class ProfileComponent extends React.Component {
    constructor(props) {
@@ -13,16 +14,22 @@ class ProfileComponent extends React.Component {
    }
 
    handleChange = id => event => {
-    this.setState({ roleValue: event.target.value, id })    
+      this.setState({ roleValue: event.target.value, id });
+      this.props.updateData(
+        this.state.id, document.getElementById("Role").value, this.state.activeValue);    
    }
 
    activeChange = id => event => {
-      this.setState({ activeValue: event.target.value, id })
+      this.setState({ activeValue: event.target.value, id });
+      this.props.updateData(
+        this.state.id, this.state.roleValue, document.getElementById("Active").value
+      );    
     }
 
   componentDidMount() {
     this.props.getData();
-  }
+  };
+
 
   editProfile = () => {
     if(this.state.roleValue == null) {
@@ -36,14 +43,17 @@ class ProfileComponent extends React.Component {
     } else {
     this.props.updateData(
       this.state.id, this.state.roleValue, this.state.activeValue
-    );}
+    )};
+     
   };
 
+ 
  renderTableData() {
   return this.props.userManagment.map((data, index) => {
     const { id, firstName, lastName, title, role, email, active } = data; //destructuring
     return (
       <tr key={index}> 
+        <td>{id}</td>
         <td>{firstName}</td>
         <td>{lastName}</td>
         <td>{title}</td>
@@ -88,6 +98,7 @@ class ProfileComponent extends React.Component {
             <table style={{ width: '100%' }}>
               <thead>
                 <tr>
+                  <th>id</th>
                   <th>First Name</th>
                   <th>Last Name</th>
                   <th>Title</th>
@@ -101,7 +112,9 @@ class ProfileComponent extends React.Component {
             </table>
              <div style={{margin:"2em 0em 0em 0em"}}>
                 <button onClick={this.editProfile} type="button" disabled={this.state.id == null} className="btn btn-rounded">Save Changes</button>
+                <NavLink to="/inviteUsers">
                 <button style={{float:"right", marginRight:"5em"}} type="button" className="btn btn-rounded">Invite Users</button>
+                </NavLink>
              </div>
           </div>
         </div>
