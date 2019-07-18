@@ -6,7 +6,7 @@ import ActionTypes from '../constants/actionTypes';
 //   payload:{ image },
 // });
 
-export default image => ({
+export default (image) => ({
   type: ActionTypes.IMAGE,
   payload: axios.post(
     `http://localhost:3300/api/images/imageAdd/`,

@@ -10,7 +10,8 @@ CREATE TABLE users (
   lastName VARCHAR(32) NOT NULL,
   title VARCHAR(32) NOT NULL,
   role VARCHAR(32) NOT NULL DEFAULT 'user',
-  active BOOLEAN
+  active BOOLEAN,
+  image VARCHAR(50) DEFAULT NULL
 );
 
 CREATE TABLE invite_users (

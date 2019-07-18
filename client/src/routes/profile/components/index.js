@@ -19,6 +19,7 @@ const ImageContainer = styled.div`
   position: relative;
   display: inline-block;
   border-radius: 50%;
+  cursor: pointer;
 `;
 
 const DelImage = styled.div`
@@ -76,14 +77,6 @@ class ProfileComponent extends React.Component {
     if (this.state.roleAdmin === 'admin') {
       this.setState({ isVisible: true });
     }
-    // if (this.props.weddingWizard && this.props.weddingWizard.image) {
-    //   const img = document.getElementById('weddingImage');
-    //   img.src = this.props.weddingWizard.image.image;
-    //   this.setState({
-    //     image: this.props.weddingWizard.image.image,
-    //     file: { lastModified: this.props.weddingWizard.image.lastModified },
-    //   });
-    // }
   }
 
   removeImage = e => {
@@ -153,6 +146,7 @@ class ProfileComponent extends React.Component {
       size: this.state.file.size,
       type: this.state.file.type,
       image: this.state.image,
+      email: this.props.profile.email
     });
     this.toggleState();
   };
@@ -173,6 +167,11 @@ class ProfileComponent extends React.Component {
     const { firstName, lastName, title, email, role } = this.props.profile;
     return (
       <div>
+        <div className={s.one}>
+          <div>
+            <img src={logo} className={s.logo} alt="logo" />
+          </div>
+        </div>
         <form
           onSubmit={this.addImage}
           encType="multipart/form-data"
