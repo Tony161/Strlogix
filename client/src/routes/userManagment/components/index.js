@@ -29,16 +29,27 @@ class ProfileComponent extends React.Component {
 
   renderTableData() {
     return this.props.userManagment.map((data, index) => {
-      const { id, firstName, lastName, title, role, email, active, image } = data; //destructuring
+      const {
+        id,
+        firstName,
+        lastName,
+        title,
+        role,
+        email,
+        active,
+        image,
+      } = data; //destructuring
       return (
         <tr key={index}>
-          <td><img
-            style={{height:'100px', width: '100px', borderRadius: '50%'}}
-            alt="profile"
-            display={this.state.image ? '' : 'none'}
-            id="profileImage"
-            src={`http://localhost:3300/uploads/${image}`}
-          /> </td>
+          <td>
+            <img
+              style={{ height: '50px', width: '50px', borderRadius: '50%' }}
+              alt="profile"
+              display={this.state.image ? '' : 'none'}
+              id="profileImage"
+              src={`http://localhost:3300/uploads/${image}`}
+            />{' '}
+          </td>
           <td>{firstName}</td>
           <td>{lastName}</td>
           <td>{title}</td>
@@ -58,8 +69,8 @@ class ProfileComponent extends React.Component {
               </select>
             </td>
           ) : (
-              <td>{role}</td>
-            )}
+            <td>{role}</td>
+          )}
           <td>{email}</td>
           <td>
             <select
@@ -70,7 +81,6 @@ class ProfileComponent extends React.Component {
               }}
               defaultValue={active}
             >
-              {/* <option>{active}</option> */}
               <option value="0">false</option>
               <option value="1">true</option>
             </select>
@@ -126,7 +136,7 @@ class ProfileComponent extends React.Component {
             <table style={{ width: '100%' }}>
               <thead>
                 <tr>
-                  <th></th>
+                  <th />
                   <th>First Name</th>
                   <th>Last Name</th>
                   <th>Title</th>
@@ -135,7 +145,7 @@ class ProfileComponent extends React.Component {
                   <th>Active</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody style={{ marginBottom: '100em' }}>
                 {Array.isArray(this.props.userManagment) &&
                   this.renderTableData()}
               </tbody>

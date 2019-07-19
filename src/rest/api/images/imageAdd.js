@@ -15,16 +15,15 @@ const imageAdd = (data, res) => {
     ) +
     '.' +
     extension;
-    fs.writeFileSync(`uploads/${newName}`, buffer);
+  fs.writeFileSync(`uploads/${newName}`, buffer);
 
   var connection = connect();
   connection.query(
     'UPDATE users SET image = ? WHERE email= ?',
-    [newName , email],
+    [newName, email],
     (err, rows, fields) => {
       if (!err) {
         res.send('ok');
-        // console.log(JSON.stringify(rows, null, 2));
       } else {
         console.log(err);
       }

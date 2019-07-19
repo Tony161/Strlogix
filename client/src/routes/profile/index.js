@@ -1,7 +1,6 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-
 import getDataAction from '../../modules/profile/actions/get';
 import updateDataAction from '../../modules/profile/actions/update';
 import profileAction from '../../modules/profile/actions/profile';

@@ -1,12 +1,9 @@
 import React from 'react';
-import axios from 'axios';
 import { withRouter } from 'react-router';
 import DragAndDrop from './dragNDrop';
-import image1 from '../../../images/image1.png';
 import s from './style.module.css';
 import logo from '../../../images/StreetLogix_Logo_1.png';
 import styled from 'styled-components';
-// import *  from '../../../images/uploads';
 
 const FileNameHidden = styled.input`
   display: none;
@@ -78,8 +75,9 @@ class ProfileComponent extends React.Component {
     if (this.state.roleAdmin === 'admin') {
       this.setState({ isVisible: true });
     }
-    if (this.props.profile.image !== undefined ) {
-    this.setState({ image: true });}
+    if (this.props.profile.image !== undefined) {
+      this.setState({ image: true });
+    }
   }
 
   removeImage = e => {
@@ -100,7 +98,7 @@ class ProfileComponent extends React.Component {
   };
 
   showImage = file => {
-    console.log(file)
+    console.log(file);
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
 
@@ -151,22 +149,10 @@ class ProfileComponent extends React.Component {
       size: this.state.file.size,
       type: this.state.file.type,
       image: this.state.image,
-      email: this.props.profile.email
+      email: this.props.profile.email,
     });
     this.toggleState();
   };
-
-  // handleUploadFile = (event) => {
-  //   const data = new FormData();
-  //   console.log(this.props.profile)
-  //   data.append('file', this.props.profile.image.image);
-  //   data.append('name', this.props.profile.image.name);
-  //   data.append('description', this.props.profile.image.type);
-  //   // '/files' is your node.js route that triggers our middleware
-  //   axios.post('http://localhost:3300/api/images/imageAdd', data).then((response) => {
-  //     console.log(response); // do something with the response
-  //   });
-  // }
 
   render() {
     const { firstName, lastName, title, email, role } = this.props.profile;
@@ -215,7 +201,9 @@ class ProfileComponent extends React.Component {
                           alt="Wedding Day"
                           display={this.state.image ? '' : 'none'}
                           id="weddingImage"
-                          src={`http://localhost:3300/uploads/${this.props.profile.image}`}
+                          src={`http://localhost:3300/uploads/${
+                            this.props.profile.image
+                          }`}
                         />
                       </ImageContainer>
                     </DragAndDrop>

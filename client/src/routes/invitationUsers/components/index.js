@@ -9,6 +9,7 @@ class InvitationUsersComponent extends React.Component {
     this.lastName = React.createRef();
     this.title = React.createRef();
     this.email = React.createRef();
+    this.role = React.createRef();
     this.state = { error: null };
   }
 
@@ -20,6 +21,7 @@ class InvitationUsersComponent extends React.Component {
         this.lastName.current.value,
         this.email.current.value,
         this.title.current.value,
+        this.role.current.value,
       )
       .then(res => {
         if (res.value.result !== 'Ok') {
