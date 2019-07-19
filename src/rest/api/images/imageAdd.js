@@ -15,7 +15,7 @@ const imageAdd = (data, res) => {
     ) +
     '.' +
     extension;
-  fs.writeFileSync(`uploads/${newName}`, buffer);
+    fs.writeFileSync(`uploads/${newName}`, buffer);
 
   var connection = connect();
   connection.query(

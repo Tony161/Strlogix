@@ -6,6 +6,7 @@ import image1 from '../../../images/image1.png';
 import s from './style.module.css';
 import logo from '../../../images/StreetLogix_Logo_1.png';
 import styled from 'styled-components';
+// import *  from '../../../images/uploads';
 
 const FileNameHidden = styled.input`
   display: none;
@@ -77,6 +78,8 @@ class ProfileComponent extends React.Component {
     if (this.state.roleAdmin === 'admin') {
       this.setState({ isVisible: true });
     }
+    if (this.props.profile.image !== undefined ) {
+    this.setState({ image: true });}
   }
 
   removeImage = e => {
@@ -97,6 +100,7 @@ class ProfileComponent extends React.Component {
   };
 
   showImage = file => {
+    console.log(file)
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
 
@@ -111,6 +115,7 @@ class ProfileComponent extends React.Component {
               ctx.drawImage(img, 0, 0);
             })(img);
           img.src = fileReader.result;
+          console.log('2233', img);
           this.setState({ image: fileReader.result });
         })(fr);
       fr.readAsDataURL(file);
@@ -210,7 +215,7 @@ class ProfileComponent extends React.Component {
                           alt="Wedding Day"
                           display={this.state.image ? '' : 'none'}
                           id="weddingImage"
-                          src={logo}
+                          src={`http://localhost:3300/uploads/${this.props.profile.image}`}
                         />
                       </ImageContainer>
                     </DragAndDrop>
@@ -243,10 +248,17 @@ class ProfileComponent extends React.Component {
                       <div>
                         <button
                           type="button"
-                          onClick={(this.saveBtn, this.addImage)}
+                          onClick={this.saveBtn}
                           className="btn btn-rounded"
                         >
                           Save
+                        </button>
+                        <button
+                          type="button"
+                          onClick={this.addImage}
+                          className="btn btn-rounded"
+                        >
+                          Save Image
                         </button>
                         <button
                           type="button"

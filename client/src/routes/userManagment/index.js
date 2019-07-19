@@ -23,6 +23,7 @@ class UserManagmentContainer extends React.Component {
 const select = (state, props) => ({
   auth: state.auth,
   userManagment: state.userManagment,
+  profile: state.profile
 });
 
 const mapDispatchToProps = dispatch =>

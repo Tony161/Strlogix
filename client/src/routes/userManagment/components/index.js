@@ -29,10 +29,16 @@ class ProfileComponent extends React.Component {
 
   renderTableData() {
     return this.props.userManagment.map((data, index) => {
-      const { id, firstName, lastName, title, role, email, active } = data; //destructuring
+      const { id, firstName, lastName, title, role, email, active, image } = data; //destructuring
       return (
         <tr key={index}>
-          <td>{id}</td>
+          <td><img
+            style={{height:'100px', width: '100px', borderRadius: '50%'}}
+            alt="profile"
+            display={this.state.image ? '' : 'none'}
+            id="profileImage"
+            src={`http://localhost:3300/uploads/${image}`}
+          /> </td>
           <td>{firstName}</td>
           <td>{lastName}</td>
           <td>{title}</td>
@@ -52,8 +58,8 @@ class ProfileComponent extends React.Component {
               </select>
             </td>
           ) : (
-            <td>{role}</td>
-          )}
+              <td>{role}</td>
+            )}
           <td>{email}</td>
           <td>
             <select
@@ -120,7 +126,7 @@ class ProfileComponent extends React.Component {
             <table style={{ width: '100%' }}>
               <thead>
                 <tr>
-                  <th>id</th>
+                  <th></th>
                   <th>First Name</th>
                   <th>Last Name</th>
                   <th>Title</th>
