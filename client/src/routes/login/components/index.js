@@ -22,7 +22,6 @@ class LoginComponent extends React.Component {
     super(props);
     this.email = React.createRef();
     this.password = React.createRef();
-    this.Checkbox = React.createRef();
   }
   state = { rememberMe: false, error: null };
 
