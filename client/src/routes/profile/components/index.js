@@ -3,7 +3,21 @@ import { withRouter } from 'react-router';
 import DragAndDrop from './dragNDrop';
 import s from './style.module.css';
 import logo from '../../../images/StreetLogix_Logo_1.png';
+import Button from '@material-ui/core/Button';
 import styled from 'styled-components';
+// import { makeStyles } from '@material-ui/core/styles';
+// import Icon from '@material-ui/core/Icon';
+// import Fab from '@material-ui/core/Fab';
+// import AddIcon from '@material-ui/icons/Add';
+
+// const useStyles = makeStyles(theme => ({
+//   fab: {
+//     margin: theme.spacing(1),
+//   },
+//   extendedIcon: {
+//     marginRight: theme.spacing(1),
+//   },
+// }));
 
 const FileNameHidden = styled.input`
   display: none;
@@ -41,6 +55,10 @@ const WeddingImage = styled.img`
   width: 100%;
   border-radius: 50%;
   display: ${props => props.display};
+`;
+
+const StyledButton = styled(Button)`
+  width: 100%;
 `;
 
 class ProfileComponent extends React.Component {
@@ -154,8 +172,12 @@ class ProfileComponent extends React.Component {
     this.toggleState();
   };
 
+  //  FloatingActionButtons= classes  =>() => {
+  //   const classes = useStyles();
+  //  }
   render() {
     const { firstName, lastName, title, email, role } = this.props.profile;
+    // this.FloatingActionButtons();
     return (
       <div>
         <div className={s.one}>
@@ -211,22 +233,24 @@ class ProfileComponent extends React.Component {
                   <div style={{ marginTop: '2em' }}>
                     {!this.state.isEdit ? (
                       <div>
-                        <button
+                        <StyledButton
                           type="button"
                           onClick={this.toggleState}
-                          className="btn btn-rounded"
+                          variant="outlined"
+                          color="primary"
                         >
                           Edit My Profile
-                        </button>
+                        </StyledButton>
                         {this.state.isVisible ? (
                           <div style={{ marginTop: '2em' }}>
-                            <button
+                            <StyledButton
                               type="button"
-                              className="btn btn-rounded"
+                              variant="outlined"
+                              color="primary"
                               onClick={this.props.gotoUserManagment}
                             >
                               Manage Users
-                            </button>
+                            </StyledButton>
                           </div>
                         ) : (
                           <div />
@@ -234,27 +258,33 @@ class ProfileComponent extends React.Component {
                       </div>
                     ) : (
                       <div>
-                        <button
+                        <StyledButton
                           type="button"
+                          variant="outlined"
+                          color="primary"
                           onClick={this.saveBtn}
-                          className="btn btn-rounded"
                         >
-                          Save
-                        </button>
-                        <button
+                          Save Profile
+                        </StyledButton>
+                        {/* <Fab color="primary" aria-label="Add" className={classes.fab}>
+                            <AddIcon />
+                          </Fab> */}
+                        <StyledButton
                           type="button"
+                          variant="outlined"
+                          color="primary"
                           onClick={this.addImage}
-                          className="btn btn-rounded"
                         >
                           Save Image
-                        </button>
-                        <button
+                        </StyledButton>
+                        <StyledButton
                           type="button"
+                          variant="outlined"
+                          color="primary"
                           onClick={this.toggleState}
-                          className="btn btn-rounded"
                         >
                           Cancel
-                        </button>
+                        </StyledButton>
                       </div>
                     )}
                   </div>

@@ -2,6 +2,21 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import logo from '../../../images/StreetLogix_Logo_1.png';
 
+import { Container, Box, TextField, Button } from '@material-ui/core';
+import styled from 'styled-components';
+
+const StyledTextField = styled(TextField)`
+  width: 100%;
+`;
+
+const StyledButton = styled(Button)`
+  width: 100%;
+`;
+
+const MyContainer = styled(Container)`
+  padding-top: 140px;
+`;
+
 class LoginComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -43,73 +58,61 @@ class LoginComponent extends React.Component {
 
   render() {
     return (
-      <div className="container" style={{ paddingTop: '10em' }}>
-        <div className="row justify-content-center">
-          <div className="col-md-4">
-            <div className="col-md-12">
-              <img src={logo} alt="logo" style={{ width: '100%' }} />
-              <br />
-              <br />
+      <MyContainer maxWidth="xs">
+        <Box>
+          <img src={logo} alt="logo" style={{ width: '100%' }} />
+          <br />
+          <br />
+        </Box>
+        <form onSubmit={this.onLogon}>
+          {this.state.error && (
+            <div className="form-group row" style={{ color: 'red' }}>
+              {this.state.error}
             </div>
-            <form onSubmit={this.onLogon}>
-              {this.state.error && (
-                <div className="form-group row" style={{ color: 'red' }}>
-                  {this.state.error}
-                </div>
-              )}
-              <div className="form-group row">
-                <input
-                  className="form-control col-md-12"
-                  type="email"
-                  placeholder="Email"
-                  ref={this.email}
-                />
-              </div>
-              <div className="form-group row" style={{ position: 'relative' }}>
-                <input
-                  className="form-control col-md-12"
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  ref={this.password}
-                />
-              </div>
-              <label>
-                <input
-                  type="checkbox"
-                  id="RememberMe"
-                  ref={this.Checkbox}
-                  onChange={this.handleCheckbox}
-                  checked={this.state.rememberMe}
-                />{' '}
-                Remember me{' '}
-              </label>
-              <br />
-
-              <div className="form-group row">
-                <input
-                  className="form-control col-md-12 btn btn-primary"
-                  type="submit"
-                  name="submit"
-                  value="Login"
-                />
-              </div>
-              <div className="form-group row">
-                Forgot password? &nbsp;
-                <a href="/recovery" onClick={this.resetPassword}>
-                  Reset password
-                </a>
-              </div>
-              <div className="form-group row">
-                Don't have an account? &nbsp;
-                <a onClick={this.signUp} href="/register">
-                  Sign Up.
-                </a>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
+          )}
+          <Box>
+            <StyledTextField type="email" inputRef={this.email} label="Email" />
+          </Box>
+          <Box>
+            <StyledTextField
+              type="password"
+              inputRef={this.password}
+              name="password"
+              label="Password"
+            />
+          </Box>
+          <Box>
+            <StyledButton
+              variant="outlined"
+              color="primary"
+              type="submit"
+              name="submit"
+            >
+              Login
+            </StyledButton>
+          </Box>
+          <Box>
+            Forgot password? &nbsp;
+            <a
+              href="/recovery"
+              style={{ color: '#3f51b5' }}
+              onClick={this.resetPassword}
+            >
+              Reset password
+            </a>
+          </Box>
+          <Box>
+            Don't have an account? &nbsp;
+            <a
+              onClick={this.signUp}
+              style={{ color: '#3f51b5' }}
+              href="/register"
+            >
+              Sign Up.
+            </a>
+          </Box>
+        </form>
+      </MyContainer>
     );
   }
 }

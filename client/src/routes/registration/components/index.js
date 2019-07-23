@@ -2,6 +2,21 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import logo from '../../../images/StreetLogix_Logo_1.png';
 
+import { Container, Box, TextField, Button } from '@material-ui/core';
+import styled from 'styled-components';
+
+const StyledTextField = styled(TextField)`
+  width: 100%;
+`;
+
+const StyledButton = styled(Button)`
+  width: 50%;
+`;
+
+const MyContainer = styled(Container)`
+  padding-top: 140px;
+`;
+
 class RegisterComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -56,96 +71,82 @@ class RegisterComponent extends React.Component {
 
   render() {
     return (
-      <div className="container" style={{ paddingTop: '10em' }}>
-        <div className="row justify-content-center">
-          <div className="col-md-4">
-            <div className="col-md-12">
-              <img src={logo} alt="logo" style={{ width: '100%' }} />
-              <br />
-              <br />
-            </div>
-            <form onSubmit={this.onRegister}>
-              {this.state.error && (
-                <div className="form-group row">{this.state.error}</div>
-              )}
-              <div className="form-group row">
-                <input
-                  className="form-control col-md-12"
-                  type="text"
-                  placeholder="First Name"
-                  ref={this.firstName}
-                />
-              </div>
-              <div className="form-group row">
-                <input
-                  className="form-control col-md-12"
-                  type="text"
-                  placeholder="Last Name"
-                  ref={this.lastName}
-                />
-              </div>
-              <div className="form-group row">
-                <input
-                  className="form-control col-md-12"
-                  type="text"
-                  placeholder="Title"
-                  ref={this.title}
-                />
-              </div>
-              <div className="form-group row">
-                <input
-                  className="form-control col-md-12"
-                  type="email"
-                  placeholder="Email"
-                  ref={this.email}
-                />
-              </div>
-              <div className="form-group row">
-                <input
-                  className="form-control col-md-12"
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  ref={this.password}
-                />
-              </div>
-              <div className="form-group row">
-                <input
-                  className="form-control col-md-12"
-                  type="password"
-                  name="rePassword"
-                  placeholder="Re-Enter Password"
-                  ref={this.rePassword}
-                />
-              </div>
-              <div className="form-group row">
-                <input
-                  className="form-control col-md-12 btn btn-primary"
-                  type="submit"
-                  name="submit"
-                  value="SIGN UP"
-                  onClick={this.onRegister}
-                />
-              </div>
-              <div className="form-group row">
-                <input
-                  className="form-control col-md-12 btn-outline-secondary"
-                  type="submit"
-                  name="submit"
-                  value="CLEAR"
-                  onClick={this.onClear}
-                />
-              </div>
-              <div className="form-group row">
-                Already have an account? &nbsp;
-                <a onClick={this.logIn} href="/login">
-                  Log In.
-                </a>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
+      <MyContainer maxWidth="xs">
+        <Box>
+          <img src={logo} alt="logo" style={{ width: '100%' }} />
+          <br />
+          <br />
+        </Box>
+        <form onSubmit={this.onRegister}>
+          {this.state.error && (
+            <Box className="form-group row">{this.state.error}</Box>
+          )}
+          <Box>
+            <StyledTextField
+              type="text"
+              inputRef={this.firstName}
+              label="First Name"
+            />
+          </Box>
+          <Box>
+            <StyledTextField label="Last Name" inputRef={this.lastName} />
+          </Box>
+          <Box>
+            <StyledTextField label="Title" inputRef={this.title} />
+          </Box>
+          <Box>
+            <StyledTextField type="email" label="Email" inputRef={this.email} />
+          </Box>
+          <Box>
+            <StyledTextField
+              type="password"
+              label="Password"
+              inputRef={this.password}
+            />
+          </Box>
+          <Box>
+            <StyledTextField
+              type="password"
+              name="rePassword"
+              label="Re-Enter Password"
+              inputRef={this.rePassword}
+            />
+          </Box>
+          <Box>
+            <StyledButton
+              variant="outlined"
+              color="primary"
+              type="submit"
+              name="submit"
+              onClick={this.onRegister}
+            >
+              SIGN UP
+            </StyledButton>
+            <StyledButton
+              variant="outlined"
+              type="submit"
+              name="submit"
+              onClick={this.onClear}
+            >
+              CLEAR
+            </StyledButton>
+          </Box>
+          {/* <Box>
+            <Button
+              variant="outlined"
+              type="submit"
+              name="submit"
+              onClick={this.onClear}
+            >CLEAR</Button>
+          </Box> */}
+          <Box>
+            Already have an account? &nbsp;
+            <a onClick={this.logIn} style={{ color: '#3f51b5' }} href="/login">
+              Log In.
+            </a>
+          </Box>
+        </form>
+      </MyContainer>
     );
   }
 }

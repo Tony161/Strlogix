@@ -2,6 +2,12 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import logo from '../../../images/StreetLogix_Logo_1.png';
 import s from '../../profile/components/style.module.css';
+import Button from '@material-ui/core/Button';
+import styled from 'styled-components';
+
+const StyledButton = styled(Button)`
+  width: 10%;
+`;
 
 class ProfileComponent extends React.Component {
   constructor(props) {
@@ -152,22 +158,24 @@ class ProfileComponent extends React.Component {
               {/* <tbody>{!this.state.showTable || this.renderTableData()}</tbody> */}
             </table>
             <div style={{ margin: '2em 0em 0em 0em' }}>
-              <button
+              <StyledButton
                 onClick={this.editProfile}
                 type="button"
-                className="btn btn-rounded"
+                variant="outlined"
+                color="primary"
                 disabled={!this.state.id}
               >
                 Save Changes
-              </button>
-              <button
+              </StyledButton>
+              <StyledButton
                 style={{ float: 'right', marginRight: '5em' }}
                 onClick={this.props.inviteUsers}
                 type="button"
-                className="btn btn-rounded"
+                variant="outlined"
+                color="primary"
               >
                 Invite Users
-              </button>
+              </StyledButton>
             </div>
           </div>
         </div>
