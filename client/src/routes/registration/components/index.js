@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router';
 import logo from '../../../images/StreetLogix_Logo_1.png';
+import s from '../../profile/components/style.module.css';
 
 class RegisterComponent extends React.Component {
   constructor(props) {
@@ -56,9 +57,10 @@ class RegisterComponent extends React.Component {
 
   render() {
     return (
-      <div className="container" style={{ paddingTop: '10em' }}>
+      <div className={s.Rwrap}>
+      <div className="container" style={{ paddingTop: '5.1em' }}>
         <div className="row justify-content-center">
-          <div className="col-md-4">
+          <div className="col-md-4" >
             <div className="col-md-12">
               <img src={logo} alt="logo" style={{ width: '100%' }} />
               <br />
@@ -136,15 +138,16 @@ class RegisterComponent extends React.Component {
                   onClick={this.onClear}
                 />
               </div>
-              <div className="form-group row">
+              <div className="form-group row" style={{color:"white"}}>
                 Already have an account? &nbsp;
-                <a onClick={this.logIn} href="/login">
+                <a style={{color:"pink"}} onClick={this.logIn} href="/login">
                   Log In.
                 </a>
               </div>
             </form>
           </div>
         </div>
+      </div>
       </div>
     );
   }

@@ -1,11 +1,11 @@
 import React from 'react';
-import axios from 'axios';
 import { withRouter } from 'react-router';
 import DragAndDrop from './dragNDrop';
-import image1 from '../../../images/image1.png';
+// import image1 from '../../../images/image1.png';
 import s from './style.module.css';
 import logo from '../../../images/StreetLogix_Logo_1.png';
 import styled from 'styled-components';
+import Button from '@material-ui/core/Button';
 
 const FileNameHidden = styled.input`
   display: none;
@@ -58,6 +58,7 @@ class ProfileComponent extends React.Component {
       isVisible: false,
       file: null,
       image: null,
+
     };
   }
 
@@ -77,6 +78,7 @@ class ProfileComponent extends React.Component {
     if (this.state.roleAdmin === 'admin') {
       this.setState({ isVisible: true });
     }
+    this.setState({image: true})
   }
 
   removeImage = e => {
@@ -210,7 +212,7 @@ class ProfileComponent extends React.Component {
                           alt="Wedding Day"
                           display={this.state.image ? '' : 'none'}
                           id="weddingImage"
-                          src={logo}
+                          src={`http://localhost:3300/uploads/${this.props.profile.image}`}
                         />
                       </ImageContainer>
                     </DragAndDrop>
@@ -227,13 +229,15 @@ class ProfileComponent extends React.Component {
                         </button>
                         {this.state.isVisible ? (
                           <div style={{ marginTop: '2em' }}>
-                            <button
+                            <Button
+                            
+                              variant="contained" color="default"
                               type="button"
                               className="btn btn-rounded"
                               onClick={this.props.gotoUserManagment}
                             >
                               Manage Users
-                            </button>
+                            </Button>
                           </div>
                         ) : (
                           <div />
