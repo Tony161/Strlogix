@@ -75,7 +75,7 @@ class LoginComponent extends React.Component {
                 {this.state.error}
               </div>
             )}
-            <Paper style={{ padding: '10px' }}>
+            <Paper style={{ padding: '30px' }}>
               <Box>
                 <StyledTextField
                   type="email"
@@ -91,6 +91,7 @@ class LoginComponent extends React.Component {
                   label="Password"
                 />
               </Box>
+              <br />
               <Box>
                 <StyledButton
                   variant="outlined"

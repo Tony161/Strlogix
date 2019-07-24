@@ -138,7 +138,7 @@ class ResetPasswordComponent extends React.Component {
             <br />
             <br />
           </Box>
-          <Paper style={{ padding: '10px' }}>
+          <Paper style={{ padding: '30px' }}>
             <Box>
               <MyH5>Reset Password</MyH5>
             </Box>
@@ -159,6 +159,7 @@ class ResetPasswordComponent extends React.Component {
                 />
               </Box>
               <Box>
+              <br />
                 <StyledButton
                   type="submit"
                   name="submit"

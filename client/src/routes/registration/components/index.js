@@ -87,7 +87,7 @@ class RegisterComponent extends React.Component {
             <br />
             <br />
           </Box>
-          <Paper style={{ padding: '10px' }}>
+          <Paper style={{ padding: '30px' }}>
             <form onSubmit={this.onRegister}>
               {this.state.error && (
                 <Box className="form-group row">{this.state.error}</Box>
@@ -128,6 +128,7 @@ class RegisterComponent extends React.Component {
                 />
               </Box>
               <Box>
+              <br />
                 <StyledButton
                   variant="outlined"
                   color="primary"

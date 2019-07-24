@@ -5,19 +5,6 @@ import s from './style.module.css';
 import logo from '../../../images/StreetLogix_Logo_1.png';
 import Button from '@material-ui/core/Button';
 import styled from 'styled-components';
-// import { makeStyles } from '@material-ui/core/styles';
-// import Icon from '@material-ui/core/Icon';
-// import Fab from '@material-ui/core/Fab';
-// import AddIcon from '@material-ui/icons/Add';
-
-// const useStyles = makeStyles(theme => ({
-//   fab: {
-//     margin: theme.spacing(1),
-//   },
-//   extendedIcon: {
-//     marginRight: theme.spacing(1),
-//   },
-// }));
 
 const FileNameHidden = styled.input`
   display: none;
@@ -116,7 +103,6 @@ class ProfileComponent extends React.Component {
   };
 
   showImage = file => {
-    console.log(file);
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
 
@@ -172,12 +158,8 @@ class ProfileComponent extends React.Component {
     this.toggleState();
   };
 
-  //  FloatingActionButtons= classes  =>() => {
-  //   const classes = useStyles();
-  //  }
   render() {
     const { firstName, lastName, title, email, role } = this.props.profile;
-    // this.FloatingActionButtons();
     return (
       <div>
         <div className={s.one}>

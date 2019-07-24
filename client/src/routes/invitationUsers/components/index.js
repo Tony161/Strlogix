@@ -130,7 +130,7 @@ class InvitationUsersComponent extends React.Component {
             <img src={logo} alt="logo" style={{ width: '100%' }} />
             <br />
           </Box>
-          <Paper style={{ padding: '10px' }}>
+          <Paper style={{ padding: '30px' }}>
             <form onSubmit={this.inviteUser}>
               {this.state.error && (
                 <div className="form-group row">{this.state.error}</div>
@@ -174,6 +174,7 @@ class InvitationUsersComponent extends React.Component {
                 />
               </Box>
               <Box>
+              <br />
                 <StyledButton
                   type="submit"
                   name="submit"
