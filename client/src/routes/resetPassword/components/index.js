@@ -1,6 +1,8 @@
 import React from 'react';
-import { Container, Box, TextField, Button } from '@material-ui/core';
+import { Container, Box, TextField, Button, Paper } from '@material-ui/core';
 import styled from 'styled-components';
+import logo from '../../../images/StreetLogix_Logo_1.png';
+import Background from '../../../images/gorod_ulitsa_doroga_116607_3840x2400.jpg';
 
 const StyledTextField = styled(TextField)`
   width: 100%;
@@ -83,6 +85,14 @@ const MyH5 = styled.h5`
   color: black;
 `;
 
+const MyBackground = styled.div`
+  height: 100vh;
+  background-image: url(${Background});
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+`;
+
 class ResetPasswordComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -92,6 +102,11 @@ class ResetPasswordComponent extends React.Component {
       error: null,
     };
   }
+
+  logIn = event => {
+    event.preventDefault();
+    this.props.gotoLogin();
+  };
 
   onResetPassword = event => {
     event.preventDefault();
@@ -116,35 +131,58 @@ class ResetPasswordComponent extends React.Component {
 
   render() {
     return (
-      <MyContainer maxWidth="xs">
-        <Box>
-          <MyH5>Reset Password</MyH5>
-        </Box>
-        <form onSubmit={this.onResetPassword}>
+      <MyBackground>
+        <MyContainer maxWidth="xs">
           <Box>
-            <StyledTextField type="email" label="Email" inputRef={this.email} />
+            <img src={logo} alt="logo" style={{ width: '100%' }} />
+            <br />
+            <br />
           </Box>
-          <Box>
-            <StyledTextField
-              type="password"
-              name="password"
-              label="Password"
-              inputRef={this.password}
-            />
-          </Box>
-          <Box>
-            <StyledButton
-              type="submit"
-              name="submit"
-              variant="outlined"
-              color="primary"
-              onClick={this.onResetPassword}
-            >
-              RESET PASSWORD
-            </StyledButton>
-          </Box>
-        </form>
-      </MyContainer>
+          <Paper style={{ padding: '10px' }}>
+            <Box>
+              <MyH5>Reset Password</MyH5>
+            </Box>
+            <form onSubmit={this.onResetPassword}>
+              <Box>
+                <StyledTextField
+                  type="email"
+                  label="Email"
+                  inputRef={this.email}
+                />
+              </Box>
+              <Box>
+                <StyledTextField
+                  type="password"
+                  name="password"
+                  label="Password"
+                  inputRef={this.password}
+                />
+              </Box>
+              <Box>
+                <StyledButton
+                  type="submit"
+                  name="submit"
+                  variant="outlined"
+                  color="primary"
+                  onClick={this.onResetPassword}
+                >
+                  RESET PASSWORD
+                </StyledButton>
+              </Box>
+              <Box>
+                Back to &nbsp;
+                <a
+                  onClick={this.logIn}
+                  style={{ color: '#3f51b5' }}
+                  href="/login"
+                >
+                  LogIn.
+                </a>
+              </Box>
+            </form>
+          </Paper>
+        </MyContainer>
+      </MyBackground>
     );
   }
 }

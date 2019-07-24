@@ -1,8 +1,9 @@
 import React from 'react';
 import { withRouter } from 'react-router';
 import logo from '../../../images/StreetLogix_Logo_1.png';
-import { Container, Box, TextField, Button } from '@material-ui/core';
+import { Container, Box, TextField, Button, Paper } from '@material-ui/core';
 import styled from 'styled-components';
+import Background from '../../../images/gorod_ulitsa_doroga_116607_3840x2400.jpg';
 
 const StyledTextField = styled(TextField)`
   width: 100%;
@@ -85,6 +86,14 @@ const MyH1 = styled.h1`
   color: black;
 `;
 
+const MyBackground = styled.div`
+  height: 100vh;
+  background-image: url(${Background});
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+`;
+
 class InvitationUsersComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -115,52 +124,70 @@ class InvitationUsersComponent extends React.Component {
 
   render() {
     return (
-      <MyContainer maxWidth="xs">
-        <Box>
-          <img src={logo} alt="logo" style={{ width: '100%' }} />
-          <br />
-          <MyH1>Invitation Users</MyH1>
-        </Box>
-        <form onSubmit={this.inviteUser}>
-          {this.state.error && (
-            <div className="form-group row">{this.state.error}</div>
-          )}
+      <MyBackground>
+        <MyContainer maxWidth="xs">
           <Box>
-            <StyledTextField
-              type="text"
-              inputRef={this.firstName}
-              label="First Name"
-            />
+            <img src={logo} alt="logo" style={{ width: '100%' }} />
+            <br />
           </Box>
-          <Box>
-            <StyledTextField
-              type="text"
-              label="Last Name"
-              inputRef={this.lastName}
-            />
-          </Box>
-          <Box>
-            <StyledTextField type="email" label="Email" inputRef={this.email} />
-          </Box>
-          <Box>
-            <StyledTextField type="text" label="Title" inputRef={this.title} />
-          </Box>
-          <Box>
-            <StyledTextField type="text" label="Role" inputRef={this.role} />
-          </Box>
-          <Box>
-            <StyledButton
-              type="submit"
-              name="submit"
-              variant="outlined"
-              color="primary"
-              onClick={this.inviteUser}
-            >
-              SEND INVITATION
-            </StyledButton>
-          </Box>
-        </form>
-      </MyContainer>
+          <Paper style={{ padding: '10px' }}>
+            <form onSubmit={this.inviteUser}>
+              {this.state.error && (
+                <div className="form-group row">{this.state.error}</div>
+              )}
+              <Box>
+                <MyH1>Invitation Users</MyH1>
+              </Box>
+              <Box>
+                <StyledTextField
+                  type="text"
+                  inputRef={this.firstName}
+                  label="First Name"
+                />
+              </Box>
+              <Box>
+                <StyledTextField
+                  type="text"
+                  label="Last Name"
+                  inputRef={this.lastName}
+                />
+              </Box>
+              <Box>
+                <StyledTextField
+                  type="email"
+                  label="Email"
+                  inputRef={this.email}
+                />
+              </Box>
+              <Box>
+                <StyledTextField
+                  type="text"
+                  label="Title"
+                  inputRef={this.title}
+                />
+              </Box>
+              <Box>
+                <StyledTextField
+                  type="text"
+                  label="Role"
+                  inputRef={this.role}
+                />
+              </Box>
+              <Box>
+                <StyledButton
+                  type="submit"
+                  name="submit"
+                  variant="outlined"
+                  color="primary"
+                  onClick={this.inviteUser}
+                >
+                  SEND INVITATION
+                </StyledButton>
+              </Box>
+            </form>
+          </Paper>
+        </MyContainer>
+      </MyBackground>
     );
   }
 }
