@@ -5,6 +5,9 @@
 To create DB:
 
 ```
+Write your password to DB at config/default.json
+
+```
 cd ./db
 ./run.sh tables.sql
 ```
