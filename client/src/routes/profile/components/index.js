@@ -220,22 +220,18 @@ class ProfileComponent extends React.Component {
                   <div style={{ marginTop: '2em' }}>
                     {!this.state.isEdit ? (
                       <div>
-                        <button
-                          type="button"
-                          onClick={this.toggleState}
-                          className="btn btn-rounded"
-                        >
+                        <Button
+                          variant="outlined" 
+                          color="primary"
+                          onClick={this.toggleState}>
                           Edit My Profile
-                        </button>
+                        </Button>
                         {this.state.isVisible ? (
                           <div style={{ marginTop: '2em' }}>
                             <Button
-                            
-                              variant="contained" color="default"
-                              type="button"
-                              className="btn btn-rounded"
-                              onClick={this.props.gotoUserManagment}
-                            >
+                             variant="outlined" 
+                             color="primary"
+                             onClick={this.props.gotoUserManagment}>
                               Manage Users
                             </Button>
                           </div>
@@ -245,20 +241,21 @@ class ProfileComponent extends React.Component {
                       </div>
                     ) : (
                       <div>
-                        <button
+                        <Button
                           type="button"
                           onClick={(this.saveBtn, this.addImage)}
-                          className="btn btn-rounded"
-                        >
+                          variant="outlined" 
+                          color="primary">
                           Save
-                        </button>
-                        <button
+                        </Button>
+                        &nbsp;
+                        <Button
                           type="button"
                           onClick={this.toggleState}
-                          className="btn btn-rounded"
-                        >
+                          variant="outlined" 
+                          color="primary">
                           Cancel
-                        </button>
+                        </Button>
                       </div>
                     )}
                   </div>

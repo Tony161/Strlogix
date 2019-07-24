@@ -25,7 +25,6 @@
   border-radius: 50%;
   cursor: pointer;
 }
-
 .ft {
   width: 100%;
   height: 300px;
@@ -36,7 +35,6 @@
   font-size: 1.5em;
    
 }
-
 .fe {
   width: 100%;
   height: 200px;
@@ -48,17 +46,13 @@
    
 }
 .Lwrap {
-  height: 100%;
+  height: 100vh;
   width: 100%;
-  background-image: url(https://images.wallpaperscraft.ru/image/gorod_vid_sverhu_zdaniia_140642_1920x1080.jpg);
-  background-repeat: repeat-y;
-  background-position: center;
-  background-size: cover;
+  background-image: url(http://www.fullhdoboi.ru/_ph/6/213463380.jpg?1563959125);
   background-color: aqua;
-}
+} 
 .Rwrap {
-  height: 100%;
+  height: 100vh;
   width: 100%;
-  background-color: aqua;
-  background-image: url(https://images.wallpaperscraft.ru/image/gorod_vid_sverhu_zdaniia_140642_1920x1080.jpg);
+  background-image: url(http://www.fullhdoboi.ru/_ph/6/213463380.jpg?1563959125); 
 }

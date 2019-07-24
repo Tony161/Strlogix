@@ -2,6 +2,9 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import logo from '../../../images/StreetLogix_Logo_1.png';
 import s from '../../profile/components/style.module.css';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
 
 class LoginComponent extends React.Component {
   constructor(props) {
@@ -44,75 +47,62 @@ class LoginComponent extends React.Component {
 
   render() {
     return (
-      <div className={s.Lwrap}>
-      <div className="container" style={{ paddingTop: '16.85em' }}>
-        <div className="row justify-content-center">
-          <div className="col-md-4">
-            <div className="col-md-12">
+     <div  className={s.Lwrap}>  
+      <div className="container" > 
+        <div className="row justify-content-center"> 
+          <div className="col-md-4" style={{margin:"30px 0px 0px 0px"}}>
               <img src={logo} alt="logo" style={{ width: '100%' }} />
               <br />
               <br />
-            </div>
+          <Paper style={{padding:"20px"}}>
             <form onSubmit={this.onLogon}>
               {this.state.error && (
                 <div className="form-group row" style={{ color: 'red' }}>
                   {this.state.error}
                 </div>
               )}
-              <div className="form-group row">
-                <input
-                  className="form-control col-md-12"
-                  type="email"
-                  placeholder="Email"
-                  ref={this.email}
-                />
+            <TextField style={{ width:'100%' }}
+              id="standard-name"
+              label="Email"
+              type="email"
+              inputRef={this.email}
+              margin="normal"/> 
+            <TextField style={{ width:'100%' }}
+              id="standard-password-input"
+              label="Password"
+              inputRef={this.password}
+              type="password"
+              autoComplete="current-password"
+              margin="normal"/>
+            <div className="row justify-content-center">
+                <Button 
+                   variant="outlined"
+                   color="primary" 
+                   type="submit"
+                   name="submit"
+                   value="Login">login
+                </Button>
+            </div>     
+            <br />
+              <div className="row justify-content-center">
+                  Forgot password? &nbsp;
+                  <a href="/recovery" onClick={this.resetPassword}>
+                    Reset password
+                  </a>
               </div>
-              
-              <div className="form-group row" style={{ position: 'relative' }}>
-                <input
-                  className="form-control col-md-12"
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  ref={this.password}
-                />
-              </div>
-              <label>
-                <input
-                  type="checkbox"
-                  id="RememberMe"
-                  ref={this.Checkbox}
-                  onChange={this.handleCheckbox}
-                  checked={this.state.rememberMe}
-                  /> <span style={{color:"white"}}>&nbsp;&nbsp;Remember me</span>
-              </label>
               <br />
-
-              <div className="form-group row">
-                <input
-                  className="form-control col-md-12 btn btn-primary"
-                  type="submit"
-                  name="submit"
-                  value="Login"
-                />
-              </div>
-              <div className="form-group row">
-                Forgot password? &nbsp;
-                <a href="/recovery" onClick={this.resetPassword}>
-                  <span style={{color:"white"}}>Reset password</span>
-                </a>
-              </div>
-              <div className="form-group row">
-                Don't have an account? &nbsp;
-                <a onClick={this.signUp} href="/register">
-                <span style={{color:"white"}}>Sign Up</span>
-                </a>
+              <div className="row justify-content-center">
+                  Don't have an account? &nbsp;
+                  <a onClick={this.signUp} href="/register">
+                  Sign Up
+                  </a>
               </div>
             </form>
-          </div>
+           </Paper>
+          </div>  
+         </div>
         </div>
-      </div>
-      </div>
+       </div>
     );
   }
 }

@@ -2,6 +2,9 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import logo from '../../../images/StreetLogix_Logo_1.png';
 import s from '../../profile/components/style.module.css';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
 
 class RegisterComponent extends React.Component {
   constructor(props) {
@@ -58,97 +61,86 @@ class RegisterComponent extends React.Component {
   render() {
     return (
       <div className={s.Rwrap}>
-      <div className="container" style={{ paddingTop: '5.1em' }}>
+      <div className="container" >
         <div className="row justify-content-center">
-          <div className="col-md-4" >
-            <div className="col-md-12">
+          <div className="col-md-4" style={{margin:"30px 0px 0px 0px"}} >
               <img src={logo} alt="logo" style={{ width: '100%' }} />
               <br />
               <br />
-            </div>
-            <form onSubmit={this.onRegister}>
-              {this.state.error && (
-                <div className="form-group row">{this.state.error}</div>
-              )}
-              <div className="form-group row">
-                <input
-                  className="form-control col-md-12"
-                  type="text"
-                  placeholder="First Name"
-                  ref={this.firstName}
-                />
-              </div>
-              <div className="form-group row">
-                <input
-                  className="form-control col-md-12"
-                  type="text"
-                  placeholder="Last Name"
-                  ref={this.lastName}
-                />
-              </div>
-              <div className="form-group row">
-                <input
-                  className="form-control col-md-12"
-                  type="text"
-                  placeholder="Title"
-                  ref={this.title}
-                />
-              </div>
-              <div className="form-group row">
-                <input
-                  className="form-control col-md-12"
-                  type="email"
-                  placeholder="Email"
-                  ref={this.email}
-                />
-              </div>
-              <div className="form-group row">
-                <input
-                  className="form-control col-md-12"
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  ref={this.password}
-                />
-              </div>
-              <div className="form-group row">
-                <input
-                  className="form-control col-md-12"
-                  type="password"
-                  name="rePassword"
-                  placeholder="Re-Enter Password"
-                  ref={this.rePassword}
-                />
-              </div>
-              <div className="form-group row">
-                <input
-                  className="form-control col-md-12 btn btn-primary"
-                  type="submit"
-                  name="submit"
-                  value="SIGN UP"
-                  onClick={this.onRegister}
-                />
-              </div>
-              <div className="form-group row">
-                <input
-                  className="form-control col-md-12 btn-outline-secondary"
-                  type="submit"
-                  name="submit"
-                  value="CLEAR"
-                  onClick={this.onClear}
-                />
-              </div>
-              <div className="form-group row" style={{color:"white"}}>
-                Already have an account? &nbsp;
-                <a style={{color:"pink"}} onClick={this.logIn} href="/login">
-                  Log In.
-                </a>
-              </div>
-            </form>
+             <Paper style={{padding:"20px"}}>
+              <form onSubmit={this.onRegister}>
+                {this.state.error && (
+                  <div className="form-group row">{this.state.error}</div> )} 
+                   <TextField style={{ width:'100%' }}
+                     id="firstName"
+                     label="Name"
+                     inputRef={this.firstName} />
+  
+                   <TextField style={{ width:'100%' }}
+                     id="lastName"
+                     label="Last Name"
+                     inputRef={this.lastName} />
+
+                   <TextField style={{ width:'100%' }}
+                     id="title"
+                     label="Title"
+                     type="text"
+                     inputRef={this.title} />
+
+                   <TextField style={{ width:'100%' }}
+                     id="email"
+                     label="Email"
+                     type="email"
+                     inputRef={this.email} />
+
+                   <TextField style={{ width:'100%' }}
+                     id="password"
+                     label="Password"
+                     inputRef={this.password}
+                     type="password"
+                     autoComplete="current-password" /> 
+
+                   <TextField style={{ width:'100%' }}
+                     id="rePassword"
+                     label=" Re-Password"
+                     inputRef={this.rePassword}
+                     type="password"
+                     autoComplete="current-password" />
+                  <br />
+                  <br />
+                   <div className="row justify-content-center">
+                      <Button 
+                         variant="outlined"
+                         color="primary" 
+                         type="submit"
+                         name="submit"
+                         onClick={this.onRegister}
+                         value="SIGN UP">login
+                      </Button>
+                   </div>    
+                  <br /> 
+                   <div className="form-group row">
+                     <input
+                       className="form-control col-md-12 btn-outline-secondary"
+                       type="submit"
+                       name="submit"
+                       value="CLEAR"
+                       onClick={this.onClear}
+                     />
+                   </div>
+
+                <div className="row justify-content-center">
+                  Already have an account? &nbsp;&nbsp; 
+                  <a onClick={this.logIn} href="/login">
+                    Log In.
+                  </a>
+                </div>
+              </form>
+             </Paper> 
           </div>
         </div>
       </div>
-      </div>
+     </div> 
     );
   }
 }
