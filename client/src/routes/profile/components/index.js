@@ -117,7 +117,6 @@ class ProfileComponent extends React.Component {
               ctx.drawImage(img, 0, 0);
             })(img);
           img.src = fileReader.result;
-          console.log('2233', img);
           this.setState({ image: fileReader.result });
         })(fr);
       fr.readAsDataURL(file);
@@ -248,9 +247,6 @@ class ProfileComponent extends React.Component {
                         >
                           Save Profile
                         </StyledButton>
-                        {/* <Fab color="primary" aria-label="Add" className={classes.fab}>
-                            <AddIcon />
-                          </Fab> */}
                         <StyledButton
                           type="button"
                           variant="outlined"

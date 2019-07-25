@@ -3,7 +3,7 @@ const connect = require('../../../db/connect');
 const getImage = (req, res) => {
   var connection = connect();
   connection.query(
-    'SELECT image FROM users WHERE email = ?',
+    'SELECT image FROM users WHERE email= ?',
     [req.params.email],
     (err, result, fields) => {
       if (!err) {

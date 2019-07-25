@@ -10,10 +10,8 @@ const addLogin = (req, res) => {
       if (err) {
         console.log(err);
       } else if (rows.length !== 0) {
-        // res.send(rows[0].firstName);
         res.json({ loggedIn: true, status: 'Ok', email: rows[0].email });
       } else {
-        // res.send('Wrong Password or Email');
         res.json({ loggedIn: false, status: 'Wrong Password or Email' });
       }
       connection.end();

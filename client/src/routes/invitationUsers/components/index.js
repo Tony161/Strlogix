@@ -174,7 +174,7 @@ class InvitationUsersComponent extends React.Component {
                 />
               </Box>
               <Box>
-              <br />
+                <br />
                 <StyledButton
                   type="submit"
                   name="submit"

@@ -19,7 +19,7 @@ const imageAdd = (data, res) => {
 
   var connection = connect();
   connection.query(
-    'UPDATE users SET image = ? WHERE email= ?',
+    'UPDATE users SET image= ? WHERE email= ?',
     [newName, email],
     (err, rows, fields) => {
       if (!err) {

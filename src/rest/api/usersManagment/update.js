@@ -3,7 +3,7 @@ const connect = require('../../../db/connect');
 const update = (req, res) => {
   var connection = connect();
   connection.query(
-    'UPDATE users SET role= ?, active = ? WHERE id= ?',
+    'UPDATE users SET role= ?, active= ? WHERE id= ?',
     [req.body.role, req.body.active, req.params.id],
     (err, rows, fields) => {
       if (!err) {

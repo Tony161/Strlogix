@@ -128,7 +128,7 @@ class RegisterComponent extends React.Component {
                 />
               </Box>
               <Box>
-              <br />
+                <br />
                 <StyledButton
                   variant="outlined"
                   color="primary"

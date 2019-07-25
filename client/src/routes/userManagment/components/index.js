@@ -44,7 +44,7 @@ class ProfileComponent extends React.Component {
         email,
         active,
         image,
-      } = data; //destructuring
+      } = data;
       return (
         <tr key={index}>
           <td>
@@ -155,7 +155,6 @@ class ProfileComponent extends React.Component {
                 {Array.isArray(this.props.userManagment) &&
                   this.renderTableData()}
               </tbody>
-              {/* <tbody>{!this.state.showTable || this.renderTableData()}</tbody> */}
             </table>
             <div style={{ margin: '2em 0em 0em 0em' }}>
               <StyledButton
